@@ -1,0 +1,38 @@
+
+<div>
+    <h2><span translate="test2App.game.detail.title">Game</span> {{vm.game.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="test2App.game.time">Time</span></dt>
+        <dd>
+            <span>{{vm.game.time | date:'medium'}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="test2App.game.home">Home</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.game.home.id})">{{vm.game.home.name}}</a>
+        </dd>
+        <hr>
+        <dt><span translate="test2App.game.away">Away</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.game.away.id})">{{vm.game.away.name}}</a>
+        </dd>
+        <hr>
+        <dt><span translate="test2App.game.result">Result</span></dt>
+        <dd>
+            <a ui-sref="fixture-result-detail({id:vm.game.result.id})">{{vm.game.result.id}}</a>
+        </dd>
+        <hr>
+        <dt><span translate="test2App.game.tournament">Tournament</span></dt>
+        <dd>
+            <a ui-sref="tournament-detail({id:vm.game.tournament.id})">{{vm.game.tournament.name}}</a>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

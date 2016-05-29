@@ -1,0 +1,24 @@
+{
+    "test2App": {
+        "tournament" : {
+            "home": {
+                "title": "Tournaments",
+                "createLabel": "Dodaj Tournament",
+                "createOrEditLabel": "Dodaj lub edytuj: Tournament",
+                "search": "Search for Tournament"
+            },
+            "created": "A new Tournament is created with identifier {{ param }}",
+            "updated": "A Tournament is updated with identifier {{ param }}",
+            "deleted": "A Tournament is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Tournament {{ id }}?"
+            },
+            "detail": {
+                "title": "Tournament"
+            },
+            "name": "Name",
+            "players": "Players",
+            "fixtures": "Fixtures"
+        }
+    }
+}

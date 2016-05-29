@@ -1,0 +1,72 @@
+<div>
+    <h2 translate="test2App.game.home.title">Games</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="game.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="test2App.game.home.createLabel">
+                        Create new Game
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="time"><span translate="test2App.game.time">Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="home.name"><span translate="test2App.game.home">Home</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="away.name"><span translate="test2App.game.away">Away</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="result.id"><span translate="test2App.game.result">Result</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tournament.name"><span translate="test2App.game.tournament">Tournament</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="game in vm.games track by game.id">
+                    <td><a ui-sref="game-detail({id:game.id})">{{game.id}}</a></td>
+                    <td>{{game.time | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="team-detail({id:game.home.id})">{{game.home.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="team-detail({id:game.away.id})">{{game.away.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="fixture-result-detail({id:game.result.id})">{{game.result.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="tournament-detail({id:game.tournament.id})">{{game.tournament.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="game-detail({id:game.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="game.edit({id:game.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="game.delete({id:game.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "players",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "login",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "fixtures",
+            "otherEntityName": "game",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "tournament"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160527174649",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "tournament",
+    "pagination": "infinite-scroll"
+}

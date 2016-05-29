@@ -1,0 +1,22 @@
+{
+    "test2App": {
+        "teseeest" : {
+            "home": {
+                "title": "Teseeests",
+                "createLabel": "Create a new Teseeest",
+                "createOrEditLabel": "Create or edit a Teseeest",
+                "search": "Search for Teseeest"
+            },
+            "created": "A new Teseeest is created with identifier {{ param }}",
+            "updated": "A Teseeest is updated with identifier {{ param }}",
+            "deleted": "A Teseeest is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Teseeest {{ id }}?"
+            },
+            "detail": {
+                "title": "Teseeest"
+            },
+            "name": "Name"
+        }
+    }
+}

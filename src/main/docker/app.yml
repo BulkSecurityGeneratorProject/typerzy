@@ -1,0 +1,15 @@
+version: '2'
+services:
+    test2-app:
+        image: test2
+        external_links:
+            - test2-mysql:mysql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/test2?useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+    test2-mysql:
+        extends:
+            file: mysql.yml
+            service: test2-mysql

@@ -1,0 +1,24 @@
+{
+    "test2App": {
+        "fixtureResult" : {
+            "home": {
+                "title": "Fixture Results",
+                "createLabel": "Create a new Fixture Result",
+                "createOrEditLabel": "Create or edit a Fixture Result",
+                "search": "Search for Fixture Result"
+            },
+            "created": "A new Fixture Result is created with identifier {{ param }}",
+            "updated": "A Fixture Result is updated with identifier {{ param }}",
+            "deleted": "A Fixture Result is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Fixture Result {{ id }}?"
+            },
+            "detail": {
+                "title": "Fixture Result"
+            },
+            "home": "Home",
+            "away": "Away",
+            "game": "Game"
+        }
+    }
+}

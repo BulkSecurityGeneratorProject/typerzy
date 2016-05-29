@@ -1,0 +1,14 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160529083559",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "teseeest",
+    "pagination": "infinite-scroll"
+}

@@ -1,0 +1,22 @@
+{
+    "test2App": {
+        "team" : {
+            "home": {
+                "title": "Teams",
+                "createLabel": "Dodaj Team",
+                "createOrEditLabel": "Dodaj lub edytuj: Team",
+                "search": "Search for Team"
+            },
+            "created": "A new Team is created with identifier {{ param }}",
+            "updated": "A Team is updated with identifier {{ param }}",
+            "deleted": "A Team is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Team {{ id }}?"
+            },
+            "detail": {
+                "title": "Team"
+            },
+            "name": "Name"
+        }
+    }
+}

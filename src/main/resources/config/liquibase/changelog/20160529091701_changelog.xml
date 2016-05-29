@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet author="Maciek (generated)" id="1464506229562-1">
+        <createTable tableName="tournament_fixtures">
+            <column name="tournament_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fixtures_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-2">
+        <addPrimaryKey columnNames="tournament_id, fixtures_id" tableName="tournament_fixtures"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-3">
+        <addUniqueConstraint columnNames="fixtures_id" deferrable="false" disabled="false" initiallyDeferred="false" tableName="tournament_fixtures"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-4">
+        <addForeignKeyConstraint baseColumnNames="tournament_id" baseTableName="tournament_fixtures" constraintName="FK_o80guc04jsatln7a27d1809rm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tournament"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-5">
+        <addForeignKeyConstraint baseColumnNames="fixtures_id" baseTableName="tournament_fixtures" constraintName="FK_ov6dff1wrqfx2ljhgfcm6jgjk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="game"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-6">
+        <dropForeignKeyConstraint baseTableName="OAUTH_ACCESS_TOKEN" constraintName="FK_OAUTH_ACCESS_TOKN_USER_NAME"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-7">
+        <dropForeignKeyConstraint baseTableName="OAUTH_CLIENT_TOKEN" constraintName="FK_OAUTH_CLIENT_TOKN_USER_NAME"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-8">
+        <dropTable tableName="OAUTH_ACCESS_TOKEN"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-9">
+        <dropTable tableName="OAUTH_APPROVALS"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-10">
+        <dropTable tableName="OAUTH_CLIENT_DETAILS"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-11">
+        <dropTable tableName="OAUTH_CLIENT_TOKEN"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-12">
+        <dropTable tableName="OAUTH_CODE"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-13">
+        <dropTable tableName="OAUTH_REFRESH_TOKEN"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-14">
+        <dropDefaultValue columnDataType="timestamp" columnName="created_date" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464506229562-15">
+        <dropDefaultValue columnDataType="timestamp" columnName="time" tableName="game"/>
+    </changeSet>
+</databaseChangeLog>

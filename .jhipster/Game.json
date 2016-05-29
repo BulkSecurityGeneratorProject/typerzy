@@ -1,0 +1,41 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "home",
+            "otherEntityName": "team",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "away",
+            "otherEntityName": "team",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "result",
+            "otherEntityName": "fixtureResult",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "game"
+        },
+        {
+            "relationshipName": "tournament",
+            "otherEntityName": "tournament",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "time",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20160527144822",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "game",
+    "pagination": "infinite-scroll"
+}

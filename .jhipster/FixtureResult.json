@@ -1,0 +1,31 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "game",
+            "otherEntityName": "game",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "result"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "home",
+            "fieldType": "Integer",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "away",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": "0"
+        }
+    ],
+    "changelogDate": "20160527172858",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "fixture_result",
+    "pagination": "infinite-scroll"
+}

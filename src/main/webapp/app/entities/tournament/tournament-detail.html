@@ -1,0 +1,32 @@
+
+<div>
+    <h2><span translate="test2App.tournament.detail.title">Tournament</span> {{vm.tournament.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="test2App.tournament.name">Name</span></dt>
+        <dd>
+            <span>{{vm.tournament.name}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="test2App.tournament.players">Players</span></dt>
+        <dd>
+            <span ng-repeat="players in vm.tournament.players">
+                {{players.login}}{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <hr>
+        <dt><span translate="test2App.tournament.fixtures">Fixtures</span></dt>
+        <dd>
+            <span ng-repeat="fixture in vm.games">
+                {{fixture.time}}{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

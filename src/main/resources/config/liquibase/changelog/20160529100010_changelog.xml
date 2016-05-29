@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet author="Maciek (generated)" id="1464508817782-1">
+        <dropForeignKeyConstraint baseTableName="OAUTH_ACCESS_TOKEN" constraintName="FK_OAUTH_ACCESS_TOKN_USER_NAME"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464508817782-2">
+        <dropForeignKeyConstraint baseTableName="OAUTH_CLIENT_TOKEN" constraintName="FK_OAUTH_CLIENT_TOKN_USER_NAME"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464508817782-3">
+        <dropTable tableName="OAUTH_ACCESS_TOKEN"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464508817782-4">
+        <dropTable tableName="OAUTH_APPROVALS"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464508817782-5">
+        <dropTable tableName="OAUTH_CLIENT_DETAILS"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464508817782-6">
+        <dropTable tableName="OAUTH_CLIENT_TOKEN"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464508817782-7">
+        <dropTable tableName="OAUTH_CODE"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464508817782-8">
+        <dropTable tableName="OAUTH_REFRESH_TOKEN"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464508817782-9">
+        <dropDefaultValue columnDataType="timestamp" columnName="created_date" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1464508817782-10">
+        <dropDefaultValue columnDataType="timestamp" columnName="time" tableName="game"/>
+    </changeSet>
+</databaseChangeLog>

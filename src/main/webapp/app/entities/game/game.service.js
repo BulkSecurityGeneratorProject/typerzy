@@ -8,23 +8,24 @@
 
     function Game ($resource, DateUtils) {
         var resourceUrl =  'api/games/:id';
-        return {
-            projects: $resource('api/tournamentgames/:id', {}, {
-              query: { method: 'GET', isArray: true }
-            }),
-            all : $resource(resourceUrl, {}, {
-                'query': { method: 'GET', isArray: true},
-                'get': {
-                    method: 'GET',
-                    transformResponse: function (data) {
-                        data = angular.fromJson(data);
-                        data.time = DateUtils.convertDateTimeFromServer(data.time);
-                        return data;
-                    }
-                },
-                'update': { method:'PUT' }
-            })
-          };
-         
+
+        return  { games: $resource(resourceUrl, {}, {
+                  'query': { method: 'GET', isArray: true},
+                  'get': {
+                      method: 'GET',
+                      transformResponse: function (data) {
+                          data = angular.fromJson(data);
+                          data.time = DateUtils.convertDateTimeFromServer(data.time);
+                          return data;
+                      }
+                  },
+                  'update': { method:'PUT' },
+                  
+                  
+                  
+              }), fixtures: $resource('api/fixtures/:id' , {
+                  'query' : {method: 'GET', param:{id:'@id'}, isArray : true}
+              })
+        }    ;
     }
 })();

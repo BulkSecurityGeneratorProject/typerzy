@@ -7,7 +7,9 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Game.
@@ -27,20 +29,26 @@ public class Game implements Serializable {
     private ZonedDateTime time;
 
     @ManyToOne
-    private Team home;
+    @JoinColumn(name="home_id")
+    private Team homeTeam;
 
     @ManyToOne
-    private Team away;
+    @JoinColumn(name="away_id")
+    private Team awayTeam;
 
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="TOURNAMENT_ID")
+    private Tournament tournament;
+    
     @OneToOne
     @JoinColumn(unique = true)
     private FixtureResult result;
 
-    @ManyToOne
-    @JoinColumn(name = "tournament_id")
-    private Tournament tournament;
+    @OneToMany
+    private Set<FixtureResult> bets = new HashSet<>();
+    
 
-    public Long getId() {
+	public Long getId() {
         return id;
     }
 
@@ -56,20 +64,20 @@ public class Game implements Serializable {
         this.time = time;
     }
 
-    public Team getHome() {
-        return home;
+    public Team getHomeTeam() {
+        return homeTeam;
     }
 
-    public void setHome(Team team) {
-        this.home = team;
+    public void setHomeTeam(Team team) {
+        this.homeTeam = team;
     }
 
-    public Team getAway() {
-        return away;
+    public Team getAwayTeam() {
+        return awayTeam;
     }
 
-    public void setAway(Team team) {
-        this.away = team;
+    public void setAwayTeam(Team team) {
+        this.awayTeam = team;
     }
 
     public FixtureResult getResult() {
@@ -80,15 +88,24 @@ public class Game implements Serializable {
         this.result = fixtureResult;
     }
 
-    public Tournament getTournament() {
-        return tournament;
-    }
 
-    public void setTournament(Tournament tournament) {
-        this.tournament = tournament;
-    }
+    public Set<FixtureResult> getBets() {
+		return bets;
+	}
 
-    @Override
+	public void setBets(Set<FixtureResult> bets) {
+		this.bets = bets;
+	}
+
+	public Tournament getTournament() {
+		return tournament;
+	}
+
+	public void setTournament(Tournament tournament) {
+		this.tournament = tournament;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

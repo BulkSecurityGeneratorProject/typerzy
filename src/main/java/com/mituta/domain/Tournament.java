@@ -103,4 +103,9 @@ public class Tournament implements Serializable {
             ", name='" + name + "'" +
             '}';
     }
+
+	public void addGame(Game game) {
+		fixtures.add(game);
+		
+	}
 }

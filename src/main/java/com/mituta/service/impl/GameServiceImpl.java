@@ -3,6 +3,7 @@ package com.mituta.service.impl;
 import com.mituta.service.GameService;
 import com.mituta.domain.Game;
 import com.mituta.repository.GameRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+
 import java.util.List;
 
 /**
@@ -72,4 +74,9 @@ public class GameServiceImpl implements GameService{
         log.debug("Request to delete Game : {}", id);
         gameRepository.delete(id);
     }
+
+	@Override
+	public Page<Game> findForTournament(Pageable pageable, Long tournament) {
+		return gameRepository.findByTournamentId(pageable, tournament);
+	}
 }

@@ -8,14 +8,14 @@
             <span>{{vm.game.time | date:'medium'}}</span>
         </dd>
         <hr>
-        <dt><span translate="test2App.game.home">Home</span></dt>
+        <dt><span translate="test2App.game.hometeam">Home</span></dt>
         <dd>
-            <a ui-sref="team-detail({id:vm.game.home.id})">{{vm.game.home.name}}</a>
+            <a ui-sref="team-detail({id:vm.game.homeTeam.id})">{{vm.game.homeTeam.name}}</a>
         </dd>
         <hr>
-        <dt><span translate="test2App.game.away">Away</span></dt>
+        <dt><span translate="test2App.game.awayteam">Away</span></dt>
         <dd>
-            <a ui-sref="team-detail({id:vm.game.away.id})">{{vm.game.away.name}}</a>
+            <a ui-sref="team-detail({id:vm.game.awayTeam.id})">{{vm.game.awayTeam.name}}</a>
         </dd>
         <hr>
         <dt><span translate="test2App.game.result">Result</span></dt>

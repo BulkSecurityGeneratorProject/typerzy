@@ -48,6 +48,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('tournament');
+                    $translatePartialLoader.addPart('game');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Tournament', function($stateParams, Tournament) {
@@ -105,6 +106,43 @@
                     $state.go('tournament', null, { reload: true });
                 }, function() {
                     $state.go('^');
+                });
+            }]
+        })
+        
+          .state('newgame', {
+        	parent: 'tournament-detail',
+            url: '/newgame',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/game/game-dialog.html',
+                    controller: 'GameDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                time: null,
+                                id: null,
+                                tournament: owner
+                            };
+                        },
+                        
+                        tournamentid: function()
+                        {
+                        	return $stateParams.id;
+                        }
+                        
+                    }
+                }).result.then(function() {
+                	
+                    $state.go('tournament-detail', {id: $stateParams.id}, { reload: true });
+                }, function() {
+                	  $state.go('tournament-detail', {id: $stateParams.id});
                 });
             }]
         })

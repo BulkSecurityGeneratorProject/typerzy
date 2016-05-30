@@ -20,8 +20,8 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="time"><span translate="test2App.game.time">Time</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="home.name"><span translate="test2App.game.home">Home</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="away.name"><span translate="test2App.game.away">Away</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="hometeam.name"><span translate="test2App.game.hometeam">Home</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="awayteam.name"><span translate="test2App.game.awayteam">Away</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="result.id"><span translate="test2App.game.result">Result</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="tournament.name"><span translate="test2App.game.tournament">Tournament</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -32,10 +32,10 @@
                     <td><a ui-sref="game-detail({id:game.id})">{{game.id}}</a></td>
                     <td>{{game.time | date:'medium'}}</td>
                     <td>
-                        <a ui-sref="team-detail({id:game.home.id})">{{game.home.name}}</a>
+                        <a ui-sref="team-detail({id:game.home.id})">{{game.homeTeam.name}}</a>
                     </td>
                     <td>
-                        <a ui-sref="team-detail({id:game.away.id})">{{game.away.name}}</a>
+                        <a ui-sref="team-detail({id:game.away.id})">{{game.awayTeam.name}}</a>
                     </td>
                     <td>
                         <a ui-sref="fixture-result-detail({id:game.result.id})">{{game.result.id}}</a>

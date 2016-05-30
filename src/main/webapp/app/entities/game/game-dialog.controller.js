@@ -5,13 +5,15 @@
         .module('test2App')
         .controller('GameDialogController', GameDialogController);
 
-    GameDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Game', 'Team', 'FixtureResult', 'Tournament'];
+    GameDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'tournamentid', 'Game', 'Team', 'FixtureResult', 'Tournament'];
 
-    function GameDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Game, Team, FixtureResult, Tournament) {
+    function GameDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, tournamentid, Game, Team, FixtureResult, Tournament) {
         var vm = this;
         vm.game = entity;
         vm.teams = Team.query();
         vm.results = FixtureResult.query({filter: 'game-is-null'});
+        
+        
         $q.all([vm.game.$promise, vm.results.$promise]).then(function() {
             if (!vm.game.result || !vm.game.result.id) {
                 return $q.reject();
@@ -20,7 +22,6 @@
         }).then(function(result) {
             vm.results.push(result);
         });
-        vm.tournaments = Tournament.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

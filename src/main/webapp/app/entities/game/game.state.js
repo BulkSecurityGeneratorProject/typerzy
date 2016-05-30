@@ -56,7 +56,6 @@
             }
         })
         .state('game.new', {
-            parent: 'game',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
@@ -77,9 +76,10 @@
                         }
                     }
                 }).result.then(function() {
+                	
                     $state.go('game', null, { reload: true });
                 }, function() {
-                    $state.go('game');
+                    $state.go('^');
                 });
             }]
         })

@@ -55,6 +55,8 @@ public class GameResource {
             .body(result);
     }
 
+    
+    
     /**
      * PUT  /games : Updates an existing game.
      *
@@ -97,26 +99,26 @@ public class GameResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/games");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
+    
     /**
-     * GET  /tournamentgames : get all the games for the specified tournament.
+     * GET  /games : get all the games.
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of games in body
      * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
-    @RequestMapping(value = "/tournamentgames/{id}",
+    @RequestMapping(value = "/fixtures/{id}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Game>> getAllTournamentGames(Long aTournamentId, Pageable pageable)
+    public ResponseEntity<List<Game>> getAllGamesForTournament(Pageable pageable, @PathVariable Long id)
         throws URISyntaxException {
         log.debug("REST request to get a page of Games");
-        Page<Game> page = gameService.findAll(pageable); 
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/games");
+        Page<Game> page = gameService.findForTournament(pageable, id); 
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/fixtures");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-    
+
     /**
      * GET  /games/:id : get the "id" game.
      *

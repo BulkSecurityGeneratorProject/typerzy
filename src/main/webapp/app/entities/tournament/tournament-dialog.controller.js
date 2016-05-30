@@ -11,7 +11,7 @@
         var vm = this;
         vm.tournament = entity;
         vm.users = User.query();
-        vm.games = Game.all.query();
+        vm.games = Game.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

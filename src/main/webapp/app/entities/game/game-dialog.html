@@ -25,26 +25,14 @@
         </div>
 
         <div class="form-group">
-            <label translate="test2App.game.home" for="field_home">Home</label>
-            <select class="form-control" id="field_home" name="home" ng-model="vm.game.home" ng-options="team as team.name for team in vm.teams track by team.id">
+            <label translate="test2App.game.hometeam" for="field_home">Home</label>
+            <select class="form-control" id="field_home" name="home" ng-model="vm.game.homeTeam" ng-options="team as team.name for team in vm.teams track by team.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label translate="test2App.game.away" for="field_away">Away</label>
-            <select class="form-control" id="field_away" name="away" ng-model="vm.game.away" ng-options="team as team.name for team in vm.teams track by team.id">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label translate="test2App.game.result" for="field_result">Result</label>
-            <select class="form-control" id="field_result" name="result" ng-model="vm.game.result" ng-options="fixtureResult as fixtureResult.id for fixtureResult in vm.results | orderBy:'id' track by fixtureResult.id">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label translate="test2App.game.tournament" for="field_tournament">Tournament</label>
-            <select class="form-control" id="field_tournament" name="tournament" ng-model="vm.game.tournament" ng-options="tournament as tournament.name for tournament in vm.tournaments track by tournament.id">
+            <label translate="test2App.game.awayteam" for="field_away">Away</label>
+            <select class="form-control" id="field_away" name="away" ng-model="vm.game.awayTeam" ng-options="team as team.name for team in vm.teams track by team.id">
                 <option value=""></option>
             </select>
         </div>

@@ -17,8 +17,8 @@
                 "title": "Game"
             },
             "time": "Time",
-            "home": "Home",
-            "away": "Away",
+            "hometeam": "Home team",
+            "awayteam": "Away team",
             "result": "Result",
             "tournament": "Tournament"
         }

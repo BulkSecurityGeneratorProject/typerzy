@@ -41,4 +41,6 @@ public interface GameService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+    
+    Page<Game> findForTournament(Pageable pageable, Long aTournament);
 }

@@ -10,8 +10,7 @@
     function TournamentDetailController($scope, $rootScope, $stateParams, entity, Tournament, User, Game) {
         var vm = this;
         vm.tournament = entity;
-        vm.games = Game.all.query();
-        
+        vm.fixtures = Game.fixtures.query({id:entity.id});
         var unsubscribe = $rootScope.$on('test2App:tournamentUpdate', function(event, result) {
             vm.tournament = result;
         });

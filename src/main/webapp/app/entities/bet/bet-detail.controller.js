@@ -5,9 +5,9 @@
         .module('test2App')
         .controller('BetDetailController', BetDetailController);
 
-    BetDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Bet'];
+    BetDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Bet', 'User'];
 
-    function BetDetailController($scope, $rootScope, $stateParams, entity, Bet) {
+    function BetDetailController($scope, $rootScope, $stateParams, entity, Bet, User) {
         var vm = this;
 
         vm.bet = entity;

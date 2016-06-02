@@ -20,6 +20,7 @@
                 <tr>
                     <th><span translate="global.field.id">ID</span></th>
                     <th><span translate="test2App.bet.time">Time</span></th>
+                    <th><span translate="test2App.bet.user">User</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -27,6 +28,9 @@
                 <tr ng-repeat="bet in vm.bets track by bet.id">
                     <td><a ui-sref="bet-detail({id:bet.id})">{{bet.id}}</a></td>
                     <td>{{bet.time | date:'medium'}}</td>
+                    <td>
+                        {{bet.user.login}}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

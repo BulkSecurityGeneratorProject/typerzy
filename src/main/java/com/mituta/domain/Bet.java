@@ -27,6 +27,11 @@ public class Bet implements Serializable {
     @Column(name = "time", nullable = false)
     private ZonedDateTime time;
 
+    @OneToOne
+    @NotNull
+    @JoinColumn(unique = true)
+    private User user;
+
     public Long getId() {
         return id;
     }
@@ -41,6 +46,14 @@ public class Bet implements Serializable {
 
     public void setTime(ZonedDateTime time) {
         this.time = time;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -35,6 +36,7 @@ public class GameServiceImpl implements GameService{
      */
     public Game save(Game game) {
         log.debug("Request to save Game : {}", game);
+        game.setTime(ZonedDateTime.now());
         Game result = gameRepository.save(game);
         return result;
     }

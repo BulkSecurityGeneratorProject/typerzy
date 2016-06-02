@@ -27,6 +27,10 @@
                         <column name="user_id" type="bigint">
                 <constraints unique="true" nullable="false" />
             </column>
+            <column name="fixture_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="bet" columnName="time" columnDataType="datetime"/>

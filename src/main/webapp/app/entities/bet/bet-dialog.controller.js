@@ -5,9 +5,9 @@
         .module('test2App')
         .controller('BetDialogController', BetDialogController);
 
-    BetDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Bet', 'User'];
+    BetDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Bet', 'User', 'Game'];
 
-    function BetDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Bet, User) {
+    function BetDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Bet, User, Game) {
         var vm = this;
 
         vm.bet = entity;
@@ -16,6 +16,7 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.users = User.query();
+        vm.games = Game.games.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

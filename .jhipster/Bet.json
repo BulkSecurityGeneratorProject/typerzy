@@ -10,6 +10,15 @@
             "otherEntityField": "login",
             "ownerSide": true,
             "otherEntityRelationshipName": "bet"
+        },
+        {
+            "relationshipName": "fixture",
+            "otherEntityName": "game",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
         }
     ],
     "fields": [

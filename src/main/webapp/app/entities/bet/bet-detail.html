@@ -12,6 +12,10 @@
         <dd>
             {{vm.bet.user.login}}
         </dd>
+        <dt><span translate="test2App.bet.fixture">Fixture</span></dt>
+        <dd>
+            <a ui-sref="game-detail({id:vm.bet.fixture.id})">{{vm.bet.fixture.id}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

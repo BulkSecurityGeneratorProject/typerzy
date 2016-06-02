@@ -25,6 +25,12 @@
             "otherEntityName": "tournament",
             "relationshipType": "many-to-one",
             "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "bets",
+            "otherEntityName": "bet",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "fixture"
         }
     ],
     "fields": [

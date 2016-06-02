@@ -21,6 +21,7 @@
                     <th><span translate="global.field.id">ID</span></th>
                     <th><span translate="test2App.bet.time">Time</span></th>
                     <th><span translate="test2App.bet.user">User</span></th>
+                    <th><span translate="test2App.bet.fixture">Fixture</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,6 +31,9 @@
                     <td>{{bet.time | date:'medium'}}</td>
                     <td>
                         {{bet.user.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="game-detail({id:bet.fixture.id})">{{bet.fixture.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

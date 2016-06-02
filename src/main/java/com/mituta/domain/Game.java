@@ -3,6 +3,8 @@ package com.mituta.domain;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -44,9 +46,11 @@ public class Game implements Serializable {
     @JoinColumn(unique = true)
     private FixtureResult result;
 
-    @OneToMany
-    private Set<FixtureResult> bets = new HashSet<>();
-    
+
+    @OneToMany(mappedBy="fixture")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Bet> bets = new HashSet<>();
 
 	public Long getId() {
         return id;
@@ -89,13 +93,6 @@ public class Game implements Serializable {
     }
 
 
-    public Set<FixtureResult> getBets() {
-		return bets;
-	}
-
-	public void setBets(Set<FixtureResult> bets) {
-		this.bets = bets;
-	}
 
 	public Tournament getTournament() {
 		return tournament;
@@ -103,6 +100,14 @@ public class Game implements Serializable {
 
 	public void setTournament(Tournament tournament) {
 		this.tournament = tournament;
+	}
+
+	public Set<Bet> getBets() {
+		return bets;
+	}
+
+	public void setBets(Set<Bet> bets) {
+		this.bets = bets;
 	}
 
 	@Override

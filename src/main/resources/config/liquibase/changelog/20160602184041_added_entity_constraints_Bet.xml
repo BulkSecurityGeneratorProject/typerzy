@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
+        <addForeignKeyConstraint baseColumnNames="fixture_id"
+                                 baseTableName="bet"
+                                 constraintName="fk_bet_fixture_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="game"/>
+
     </changeSet>
 </databaseChangeLog>

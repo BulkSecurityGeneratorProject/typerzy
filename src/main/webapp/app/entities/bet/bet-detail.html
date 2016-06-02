@@ -1,0 +1,18 @@
+
+<div>
+    <h2><span translate="test2App.bet.detail.title">Bet</span> {{vm.bet.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="test2App.bet.time">Time</span></dt>
+        <dd>
+            <span>{{vm.bet.time | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

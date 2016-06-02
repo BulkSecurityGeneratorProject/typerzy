@@ -1,0 +1,22 @@
+{
+    "test2App": {
+        "bet" : {
+            "home": {
+                "title": "Bets",
+                "createLabel": "Create a new Bet",
+                "createOrEditLabel": "Create or edit a Bet",
+                "search": "Search for Bet"
+            },
+            "created": "A new Bet is created with identifier {{ param }}",
+            "updated": "A Bet is updated with identifier {{ param }}",
+            "deleted": "A Bet is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Bet {{ id }}?"
+            },
+            "detail": {
+                "title": "Bet"
+            },
+            "time": "Time"
+        }
+    }
+}

@@ -13,6 +13,7 @@
                 "tournament": "Turniej",
                 "game": "Game",
                 "tournament": "Tournament",
+                "bet": "Bet",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

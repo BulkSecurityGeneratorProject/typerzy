@@ -1,0 +1,17 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "time",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160602184041",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "bet",
+    "pagination": "no"
+}

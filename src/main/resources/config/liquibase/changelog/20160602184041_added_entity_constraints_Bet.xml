@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="game"/>
 
+        <addForeignKeyConstraint baseColumnNames="result_id"
+                                 baseTableName="bet"
+                                 constraintName="fk_bet_result_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fixture_result"/>
+
     </changeSet>
 </databaseChangeLog>

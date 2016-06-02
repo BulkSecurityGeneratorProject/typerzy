@@ -19,6 +19,15 @@
                 "required"
             ],
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "result",
+            "otherEntityName": "fixtureResult",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
         }
     ],
     "fields": [

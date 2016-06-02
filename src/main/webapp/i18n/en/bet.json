@@ -18,7 +18,8 @@
             },
             "time": "Time",
             "user": "User",
-            "fixture": "Fixture"
+            "fixture": "Fixture",
+            "result": "Result"
         }
     }
 }

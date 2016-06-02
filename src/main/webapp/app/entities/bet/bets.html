@@ -22,6 +22,7 @@
                     <th><span translate="test2App.bet.time">Time</span></th>
                     <th><span translate="test2App.bet.user">User</span></th>
                     <th><span translate="test2App.bet.fixture">Fixture</span></th>
+                    <th><span translate="test2App.bet.result">Result</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,7 +34,10 @@
                         {{bet.user.login}}
                     </td>
                     <td>
-                        <a ui-sref="game-detail({id:bet.fixture.id})">{{bet.fixture.id}}</a>
+                        <a ui-sref="game-detail({id:bet.fixture.id})">{{bet.fixture.homeTeam.name}} - {{bet.fixture.awayTeam.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="fixture-result-detail({id:bet.result.id})">{{bet.result.home}} - {{bet.result.away}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

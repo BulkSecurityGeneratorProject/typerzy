@@ -5,7 +5,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -35,8 +34,11 @@ public class Bet implements Serializable {
 
     @ManyToOne
     @NotNull
-    @JoinColumn(name="FIXTURE_ID")
     private Game fixture;
+
+    @ManyToOne
+    @NotNull
+    private FixtureResult result;
 
     public Long getId() {
         return id;
@@ -68,6 +70,14 @@ public class Bet implements Serializable {
 
     public void setFixture(Game game) {
         this.fixture = game;
+    }
+
+    public FixtureResult getResult() {
+        return result;
+    }
+
+    public void setResult(FixtureResult fixtureResult) {
+        this.result = fixtureResult;
     }
 
     @Override

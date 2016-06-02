@@ -10,7 +10,7 @@
     function FixtureResultDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, FixtureResult, Game) {
         var vm = this;
         vm.fixtureResult = entity;
-        vm.games = Game.query();
+        vm.games = Game.games.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

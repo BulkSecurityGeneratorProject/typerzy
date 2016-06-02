@@ -14,7 +14,7 @@
         vm.reverse = true;
         vm.page = 0;
         vm.loadAll = function() {
-            Game.query({
+            Game.games.query({
                 page: vm.page,
                 size: 20,
                 sort: sort()

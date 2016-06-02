@@ -113,6 +113,7 @@
           .state('newgame', {
         	parent: 'tournament-detail',
             url: '/newgame',
+            params: {owner:null},
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -126,23 +127,19 @@
                     resolve: {
                         entity: function () {
                             return {
-                                time: null,
+                                time: new Date(),
                                 id: null,
-                                tournament: owner
+                                tournament: $stateParams.owner
                             };
-                        },
-                        
-                        tournamentid: function()
-                        {
-                        	return $stateParams.id;
                         }
+                        
                         
                     }
                 }).result.then(function() {
                 	
-                    $state.go('tournament-detail', {id: $stateParams.id}, { reload: true });
+                    $state.go('tournament-detail', {id: $stateParams.owner.id}, { reload: true });
                 }, function() {
-                	  $state.go('tournament-detail', {id: $stateParams.id});
+                	  $state.go('tournament-detail', {id: $stateParams.owner.id});
                 });
             }]
         })

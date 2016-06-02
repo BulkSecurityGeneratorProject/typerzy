@@ -5,9 +5,9 @@
         .module('test2App')
         .controller('GameDialogController', GameDialogController);
 
-    GameDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'tournamentid', 'Game', 'Team', 'FixtureResult', 'Tournament'];
+    GameDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity',  'Game', 'Team', 'FixtureResult', 'Tournament'];
 
-    function GameDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, tournamentid, Game, Team, FixtureResult, Tournament) {
+    function GameDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity,  Game, Team, FixtureResult, Tournament) {
         var vm = this;
         vm.game = entity;
         vm.teams = Team.query();
@@ -40,9 +40,9 @@
         vm.save = function () {
             vm.isSaving = true;
             if (vm.game.id !== null) {
-                Game.update(vm.game, onSaveSuccess, onSaveError);
+                Game.games.update(vm.game, onSaveSuccess, onSaveError);
             } else {
-                Game.save(vm.game, onSaveSuccess, onSaveError);
+                Game.games.save(vm.game, onSaveSuccess, onSaveError);
             }
         };
 

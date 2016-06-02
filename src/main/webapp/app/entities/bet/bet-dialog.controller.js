@@ -29,6 +29,7 @@
 
         function save () {
             vm.isSaving = true;
+            
             if (vm.bet.id !== null) {
                 Bet.update(vm.bet, onSaveSuccess, onSaveError);
             } else {

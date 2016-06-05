@@ -59,8 +59,15 @@
             </p>
         </div>
         <div class="form-group">
+       
             <label translate="test2App.bet.result" for="field_result">Result</label>
-            <select class="form-control" id="field_result" name="result" ng-model="vm.bet.result" ng-options="fixtureResult as fixtureResult.id for fixtureResult in vm.fixtureresults track by fixtureResult.id" required>
+             <input type="number" class="form-control" name="homeResult" id="home_result"
+                    ng-model="vm.bet.result.home"
+                    required />
+         <input type="number" class="form-control" name="awayResult" id="away_result"
+                    ng-model="vm.bet.result.away"
+                    required />
+           <!--   <select class="form-control" id="field_result" name="result" ng-model="vm.bet.result" ng-options="fixtureResult as fixtureResult.id for fixtureResult in vm.fixtureresults track by fixtureResult.id" required>
                 <option value=""></option>
             </select>
         </div>
@@ -69,7 +76,7 @@
                 ng-show="editForm.result.$error.required" translate="entity.validation.required">
                 This field is required.
             </p>
-        </div>
+        </div> -->
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

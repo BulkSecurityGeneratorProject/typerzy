@@ -27,16 +27,17 @@ public class Bet implements Serializable {
     @Column(name = "time", nullable = false)
     private ZonedDateTime time;
 
-    @OneToOne
+    @ManyToOne
     @NotNull
-    @JoinColumn(unique = true)
+    @JoinColumn(name="user_id", unique=false)
+
     private User user;
 
     @ManyToOne
     @NotNull
     private Game fixture;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @NotNull
     private FixtureResult result;
 

@@ -51,7 +51,7 @@
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Game', function($stateParams, Game) {
-                    return Game.get({id : $stateParams.id});
+                    return Game.games.get({id : $stateParams.id});
                 }]
             }
         })
@@ -82,56 +82,8 @@
                     $state.go('^');
                 });
             }]
-        })
-        .state('game.edit', {
-            parent: 'game',
-            url: '/{id}/edit',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/game/game-dialog.html',
-                    controller: 'GameDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: ['Game', function(Game) {
-                            return Game.get({id : $stateParams.id});
-                        }]
-                    }
-                }).result.then(function() {
-                    $state.go('game', null, { reload: true });
-                }, function() {
-                    $state.go('^');
-                });
-            }]
-        })
-        .state('game.delete', {
-            parent: 'game',
-            url: '/{id}/delete',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/game/game-delete-dialog.html',
-                    controller: 'GameDeleteController',
-                    controllerAs: 'vm',
-                    size: 'md',
-                    resolve: {
-                        entity: ['Game', function(Game) {
-                            return Game.get({id : $stateParams.id});
-                        }]
-                    }
-                }).result.then(function() {
-                    $state.go('game', null, { reload: true });
-                }, function() {
-                    $state.go('^');
-                });
-            }]
         });
+      
     }
 
 })();

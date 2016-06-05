@@ -47,7 +47,7 @@ public class Game implements Serializable {
     private FixtureResult result;
 
 
-    @OneToMany(mappedBy="fixture")
+    @OneToMany(mappedBy="fixture", cascade=CascadeType.REMOVE)
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Bet> bets = new HashSet<>();

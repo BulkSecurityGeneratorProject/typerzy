@@ -14,7 +14,7 @@
             $uibModalInstance.dismiss('cancel');
         };
         vm.confirmDelete = function (id) {
-            Game.delete({id: id},
+            Game.games.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
                 });

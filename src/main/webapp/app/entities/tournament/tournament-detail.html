@@ -1,18 +1,10 @@
 
 <div>
 	<h2>
-		<span translate="test2App.tournament.detail.title">Tournament</span>
-		{{vm.tournament.id}}
+	<span>{{vm.tournament.name}}</span>
 	</h2>
 	<hr>
 	<dl class="dl-horizontal">
-		<dt>
-			<span translate="test2App.tournament.name">Name</span>
-		</dt>
-		<dd>
-			<span>{{vm.tournament.name}}</span>
-		</dd>
-		<hr>
 		<dt>
 			<span translate="test2App.tournament.players">Players</span>
 		</dt>
@@ -72,17 +64,17 @@
 						</td>
 						<td class="text-right">
 							<div class="btn-group flex-btn-group-container">
-								<button type="submit" ui-sref="game-detail({id:game.id})"
+								<button type="submit" ui-sref="game-detail({gameid:game.id, owner:vm.tournament})"
 									class="btn btn-info btn-sm">
 									<span class="glyphicon glyphicon-eye-open"></span> <span
 										class="hidden-xs hidden-sm" translate="entity.action.view"></span>
 								</button>
-								<button type="submit" ui-sref="game.edit({id:game.id})"
+								<button type="submit" ui-sref="game.edit({gameid:game.id, owner:vm.tournament})"
 									class="btn btn-primary btn-sm">
 									<span class="glyphicon glyphicon-pencil"></span> <span
 										class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
 								</button>
-								<button type="submit" ui-sref="game.delete({id:game.id})"
+								<button type="submit" ui-sref="game.delete({gameid:game.id, owner:vm.tournament})"
 									class="btn btn-danger btn-sm">
 									<span class="glyphicon glyphicon-remove-circle"></span> <span
 										class="hidden-xs hidden-sm" translate="entity.action.delete"></span>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet author="Maciek (generated)" id="1465139424803-1">
+        <createTable tableName="bet">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="betPK"/>
+            </column>
+            <column name="time" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fixture_id" type="BIGINT"/>
+            <column name="result_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-2">
+        <createTable tableName="fixture_result">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="fixture_resultPK"/>
+            </column>
+            <column name="away" type="INT"/>
+            <column name="home" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-3">
+        <createTable tableName="game">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="gamePK"/>
+            </column>
+            <column name="time" type="timestamp"/>
+            <column name="away_id" type="BIGINT"/>
+            <column name="home_id" type="BIGINT"/>
+            <column name="result_id" type="BIGINT"/>
+            <column name="tournament_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-4">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-5">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="timestamp"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-6">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-7">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+            <column name="activated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="lang_key" type="VARCHAR(5)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)"/>
+            <column name="reset_date" type="timestamp"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-8">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-9">
+        <createTable tableName="team">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="teamPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-10">
+        <createTable tableName="teseeest">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="teseeestPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-11">
+        <createTable tableName="tournament">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="tournamentPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-12">
+        <createTable tableName="tournament_players">
+            <column name="tournaments_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="players_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-13">
+        <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-14">
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-15">
+        <addPrimaryKey columnNames="tournaments_id, players_id" tableName="tournament_players"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-16">
+        <addPrimaryKey columnNames="name" constraintName="jhi_authorityPK" tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-17">
+        <addUniqueConstraint columnNames="result_id" constraintName="UC_GAMERESULT_ID_COL" deferrable="false" disabled="false" initiallyDeferred="false" tableName="game"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-18">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" deferrable="false" disabled="false" initiallyDeferred="false" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-19">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" deferrable="false" disabled="false" initiallyDeferred="false" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-20">
+        <addForeignKeyConstraint baseColumnNames="result_id" baseTableName="bet" constraintName="FK_369bro5uy8453knfgm6na314r" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="fixture_result"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-21">
+        <addForeignKeyConstraint baseColumnNames="fixture_id" baseTableName="bet" constraintName="FK_5o7q34kcm9uqxck3ot6kom8tl" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="game"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-22">
+        <addForeignKeyConstraint baseColumnNames="tournament_id" baseTableName="game" constraintName="FK_6447jc2funi7116reju8qw68m" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tournament"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-23">
+        <addForeignKeyConstraint baseColumnNames="players_id" baseTableName="tournament_players" constraintName="FK_cfgmecnw6x0fm6jh5y506b0cc" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-24">
+        <addForeignKeyConstraint baseColumnNames="tournaments_id" baseTableName="tournament_players" constraintName="FK_dfytmye60urmaho3c2kagd897" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tournament"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-25">
+        <addForeignKeyConstraint baseColumnNames="away_id" baseTableName="game" constraintName="FK_eepqiop2kfrnu3a380ytwkqbp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-26">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK_evb970jo5bi8aon8s65c0lyyn" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-27">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="bet" constraintName="FK_gjn3uhst7a7f1q8gp7plsaklp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-28">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK_ik5r332jlvpolfr7e5n7oi42l" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-29">
+        <addForeignKeyConstraint baseColumnNames="result_id" baseTableName="game" constraintName="FK_oli8fqjob9wjidurq4sxp1q9g" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="fixture_result"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-30">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK_pg0oaw6mr9pt3ibeihdc1jwof" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Maciek (generated)" id="1465139424803-31">
+        <addForeignKeyConstraint baseColumnNames="home_id" baseTableName="game" constraintName="FK_rc8ror37n8npt6scbnfyg8bsq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+</databaseChangeLog>

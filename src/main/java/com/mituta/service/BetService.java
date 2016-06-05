@@ -2,12 +2,16 @@ package com.mituta.service;
 
 import com.mituta.domain.Bet;
 import com.mituta.repository.BetRepository;
+import com.mituta.repository.FixtureResultRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -30,6 +34,7 @@ public class BetService {
      */
     public Bet save(Bet bet) {
         log.debug("Request to save Bet : {}", bet);
+        bet.setTime(ZonedDateTime.now());
         Bet result = betRepository.save(bet);
         return result;
     }

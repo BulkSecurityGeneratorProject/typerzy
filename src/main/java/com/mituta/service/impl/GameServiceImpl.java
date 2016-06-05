@@ -36,7 +36,6 @@ public class GameServiceImpl implements GameService{
      */
     public Game save(Game game) {
         log.debug("Request to save Game : {}", game);
-        game.setTime(ZonedDateTime.now());
         Game result = gameRepository.save(game);
         return result;
     }

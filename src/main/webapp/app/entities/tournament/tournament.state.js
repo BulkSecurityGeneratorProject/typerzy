@@ -145,7 +145,7 @@
         })
         .state('tournament.delete', {
             parent: 'tournament',
-            url: '/{id}/delete',
+            url: '/{gameid}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -157,13 +157,63 @@
                     size: 'md',
                     resolve: {
                         entity: ['Tournament', function(Tournament) {
-                            return Tournament.get({id : $stateParams.id});
+                            return Tournament.get({id : $stateParams.gameid});
                         }]
                     }
                 }).result.then(function() {
                     $state.go('tournament', null, { reload: true });
                 }, function() {
                     $state.go('^');
+                });
+            }]
+        })  .state('game.edit', {
+            parent: 'tournament-detail',
+            url: '/{gameid}/edit',
+            params: {owner:null},
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/game/game-dialog.html',
+                    controller: 'GameDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Game', function(Game) {
+                            return Game.games.get({id : $stateParams.gameid});
+                        }]
+                    }
+                }).result.then(function() {
+                	   $state.go('tournament-detail', {id: $stateParams.owner.id}, { reload: true });
+                }, function() {
+                	  $state.go('tournament-detail', {id: $stateParams.owner.id});
+                });
+            }]
+        })
+        .state('game.delete', {
+            parent: 'tournament-detail',
+            url: '/{id}/delete',
+            params: {owner:null},
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/game/game-delete-dialog.html',
+                    controller: 'GameDeleteController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Game', function(Game) {
+                            return Game.games.get({id : $stateParams.id});
+                        }]
+                    }
+                }).result.then(function() {
+                	   $state.go('tournament-detail', {id: $stateParams.owner.id}, { reload: true });
+                }, function() {
+                	  $state.go('tournament-detail', {id: $stateParams.owner.id});
                 });
             }]
         });

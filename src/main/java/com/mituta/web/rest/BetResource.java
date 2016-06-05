@@ -42,7 +42,7 @@ public class BetResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Bet> createBet(@Valid @RequestBody Bet bet) throws URISyntaxException {
+    public ResponseEntity<Bet> createBet( @RequestBody Bet bet) throws URISyntaxException {
         log.debug("REST request to save Bet : {}", bet);
         if (bet.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("bet", "idexists", "A new bet cannot already have an ID")).body(null);

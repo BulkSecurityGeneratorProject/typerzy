@@ -7,6 +7,8 @@
                 "createOrEditLabel": "Create or edit a Tournament",
                 "search": "Search for Tournament"
             },
+           "exactResultPoints": "Points for exact result",
+           "resultPoints": "Points for result",
             "created": "A new Tournament is created with identifier {{ param }}",
             "updated": "A Tournament is updated with identifier {{ param }}",
             "deleted": "A Tournament is deleted with identifier {{ param }}",

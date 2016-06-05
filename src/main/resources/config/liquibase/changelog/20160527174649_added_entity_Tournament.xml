@@ -25,6 +25,11 @@
                 <constraints nullable="false" />
             </column>
             
+            <column name="RESULT_POINTS" type="bigint">
+            </column>
+            <column name="EXACT_RESULT_POINTS" type="bigint">
+            </column>
+            
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         

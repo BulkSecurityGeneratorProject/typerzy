@@ -12,12 +12,8 @@
 
         vm.bet = entity;
         vm.clear = clear;
-        vm.datePickerOpenStatus = {};
-        vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.users = User.query();
         vm.games = Game.games.query();
-        vm.fixtureresults = FixtureResult.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -47,10 +43,5 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.time = false;
-
-        function openCalendar (date) {
-            vm.datePickerOpenStatus[date] = true;
-        }
     }
 })();

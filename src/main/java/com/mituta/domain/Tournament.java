@@ -44,6 +44,11 @@ public class Tournament implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Game> fixtures = new HashSet<>();
 
+    
+    private int resultPoints =1;
+    private int exactResultPoints =2;
+    
+    
     public Long getId() {
         return id;
     }
@@ -76,7 +81,23 @@ public class Tournament implements Serializable {
         this.fixtures = games;
     }
 
-    @Override
+    public int getResultPoints() {
+		return resultPoints;
+	}
+
+	public void setResultPoints(int resultPoints) {
+		this.resultPoints = resultPoints;
+	}
+
+	public int getExactResultPoints() {
+		return exactResultPoints;
+	}
+
+	public void setExactResultPoints(int exactResultPoints) {
+		this.exactResultPoints = exactResultPoints;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -106,6 +127,5 @@ public class Tournament implements Serializable {
 
 	public void addGame(Game game) {
 		fixtures.add(game);
-		
 	}
 }

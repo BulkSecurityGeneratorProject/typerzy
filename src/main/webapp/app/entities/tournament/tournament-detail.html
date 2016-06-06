@@ -5,14 +5,7 @@
 	</h2>
 	<hr>
 	<dl class="dl-horizontal">
-		<dt>
-			<span translate="test2App.tournament.players">Players</span>
-		</dt>
-		<dd>
-			<span ng-repeat="players in vm.tournament.players">
-				{{players.login}}{{$last ? '' : ', '}} </span>
-		</dd>
-		<hr>
+		
 		<dt>
 			<span translate="test2App.tournament.resultPoints">Result points</span>
 		</dt>
@@ -28,6 +21,14 @@
 			<span>
 				{{vm.tournament.exactResultPoints}} </span>
 		</dd>
+		<dt>
+			<span translate="test2App.tournament.players">Players</span>
+		</dt>
+		<dd>
+			<span ng-repeat="players in vm.tournament.players">
+				{{players.login}}{{$last ? '' : ', '}} </span>
+		</dd>
+		<hr>
 		<hr>
 		<div class="container-fluid">
 			<div class="row">
@@ -59,9 +60,7 @@
 						<th jh-sort-by="result.id"><span
 							translate="test2App.game.result">Result</span> <span
 							class="glyphicon glyphicon-sort"></span></th>
-						<th jh-sort-by="tournament.name"><span
-							translate="test2App.game.tournament">Tournament</span> <span
-							class="glyphicon glyphicon-sort"></span></th>
+						<th><span translate="test2App.tournament.players">Players</span></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -76,7 +75,9 @@
 						</td>
 						<td><a ui-sref="fixture-result-detail({id:game.result.id})">{{game.result.id}}</a>
 						</td>
-						<td><a ui-sref="tournament-detail({id:game.tournament.id})">{{game.tournament.name}}</a>
+						<td>
+						<ul><span ng-repeat="players in vm.tournament.players">
+				<li>{{players.login}}</li> </span></ul>
 						</td>
 						<td class="text-right">
 							<div class="btn-group flex-btn-group-container">

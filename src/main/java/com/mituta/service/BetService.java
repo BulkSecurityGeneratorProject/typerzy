@@ -64,6 +64,21 @@ public class BetService {
 	public List<Bet> findAll() {
 		log.debug("Request to get all Bets");
 		List<Bet> result = betRepository.findAll();
+		
+		ZonedDateTime now = ZonedDateTime.now();
+		
+		for(Bet bet : result )
+		{
+			if( bet.getFixture().getTime().isAfter(now))
+			{
+				bet.setHidden(true);
+				bet.setResult(null);
+			}
+			else
+			{
+				bet.setHidden(false);
+			}
+		}
 		return result;
 	}
 

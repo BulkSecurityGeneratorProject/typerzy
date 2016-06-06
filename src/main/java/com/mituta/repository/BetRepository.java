@@ -1,8 +1,12 @@
 package com.mituta.repository;
 
 import com.mituta.domain.Bet;
+import com.mituta.domain.Game;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -12,4 +16,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface BetRepository extends JpaRepository<Bet,Long> {
 
+	@Query("SELECT b FROM Bet b  where b.fixture.id  =:id")
+	List<Bet> findByGameId( @Param("id") Long id);
 }

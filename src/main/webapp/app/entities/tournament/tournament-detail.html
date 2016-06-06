@@ -1,26 +1,27 @@
 
 <div>
 	<h2>
-	<span>{{vm.tournament.name}}</span>
+		<span>{{vm.tournament.name}}</span>
 	</h2>
 	<hr>
 	<dl class="dl-horizontal">
-		
+
 		<dt>
-			<span translate="test2App.tournament.resultPoints">Result points</span>
+			<span translate="test2App.tournament.resultPoints">Result
+				points</span>
 		</dt>
 		<dd>
-			<span>
-				{{vm.tournament.resultPoints}} </span>
+			<span> {{vm.tournament.resultPoints}} </span>
 		</dd>
 		<hr>
 		<dt>
-			<span translate="test2App.tournament.exactResultPoints">Exact result points</span>
+			<span translate="test2App.tournament.exactResultPoints">Exact
+				result points</span>
 		</dt>
 		<dd>
-			<span>
-				{{vm.tournament.exactResultPoints}} </span>
+			<span> {{vm.tournament.exactResultPoints}} </span>
 		</dd>
+		<hr/>
 		<dt>
 			<span translate="test2App.tournament.players">Players</span>
 		</dt>
@@ -33,7 +34,8 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-4 no-padding-left">
-					<button class="btn btn-primary" ui-sref="newgame({id:vm.tournament.id, owner:vm.tournament})">
+					<button class="btn btn-primary"
+						ui-sref="newgame({id:vm.tournament.id, owner:vm.tournament})">
 						<span class="glyphicon glyphicon-plus"></span> <span
 							translate="test2App.game.home.createLabel"> Create new
 							Game </span>
@@ -47,8 +49,6 @@
 				<thead>
 					<tr jh-sort="vm.predicate" ascending="vm.reverse"
 						callback="vm.reset()">
-						<th jh-sort-by="id"><span translate="global.field.id">ID</span>
-							<span class="glyphicon glyphicon-sort"></span></th>
 						<th jh-sort-by="time"><span translate="test2App.game.time">Time</span>
 							<span class="glyphicon glyphicon-sort"></span></th>
 						<th jh-sort-by="hometeam.name"><span
@@ -60,14 +60,14 @@
 						<th jh-sort-by="result.id"><span
 							translate="test2App.game.result">Result</span> <span
 							class="glyphicon glyphicon-sort"></span></th>
-						<th><span translate="test2App.tournament.players">Players</span></th>
+						<th></th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody infinite-scroll="vm.loadPage(vm.page + 1)"
 					infinite-scroll-disabled="vm.page >= vm.links['last']">
-					<tr ng-repeat="game in vm.fixtures track by game.id">
-						<td><a ui-sref="game-detail({id:game.id})">{{game.id}}</a></td>
+
+					<tr ng-repeat-start="game in vm.fixtures track by game.id">
 						<td>{{game.time | date:'medium'}}</td>
 						<td><a ui-sref="team-detail({id:game.home.id})">{{game.homeTeam.name}}</a>
 						</td>
@@ -75,32 +75,57 @@
 						</td>
 						<td><a ui-sref="fixture-result-detail({id:game.result.id})">{{game.result.id}}</a>
 						</td>
-						<td>
-						<ul><span ng-repeat="players in vm.tournament.players">
-				<li>{{players.login}}</li> </span></ul>
-						</td>
+
 						<td class="text-right">
 							<div class="btn-group flex-btn-group-container">
-								<button type="submit" ui-sref="game-detail({gameid:game.id, owner:vm.tournament})"
+								<button type="submit"
+									ui-sref="game-detail({gameid:game.id, owner:vm.tournament})"
 									class="btn btn-info btn-sm">
 									<span class="glyphicon glyphicon-eye-open"></span> <span
 										class="hidden-xs hidden-sm" translate="entity.action.view"></span>
 								</button>
-								<button type="submit" ui-sref="game.edit({gameid:game.id, owner:vm.tournament})"
+								<button type="submit"
+									ui-sref="game.edit({gameid:game.id, owner:vm.tournament})"
 									class="btn btn-primary btn-sm">
 									<span class="glyphicon glyphicon-pencil"></span> <span
 										class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
 								</button>
-								<button type="submit" ui-sref="game.delete({gameid:game.id, owner:vm.tournament})"
+								<button type="submit"
+									ui-sref="game.delete({gameid:game.id, owner:vm.tournament})"
 									class="btn btn-danger btn-sm">
 									<span class="glyphicon glyphicon-remove-circle"></span> <span
 										class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
 								</button>
 							</div>
 						</td>
+						<td>
+							<button ng-if="game.expanded" ng-click="game.expanded = false">-</button>
+							<button ng-if="!game.expanded" ng-click="game.expanded = true">+</button>
+						</td>
+					</tr>
+					<tr ng-if="game.expanded" ng-repeat-end="">
+						<td colspan="6">
+							<table class="jh-table table table-striped">
+								<thead>
+									<tr>
+										<th><span translate="test2App.bet.user">Login</span></th>
+										<th><span
+											translate="test2App.bet.time">Time</span></th>
+										<th><span
+											translate="test2App.bet.result">Fixture</span> </th>
+									</tr>
+								</thead>
+							<tbody ng-init='bets = getBets(game)'>
+								<tr ng-repeat="bet in bets">
+									<td>{{bet.user.login}}</td>
+									<td>{{bet.time | date:'medium'}}</td>
+									<td><img ng-if="bet.set == false"  width="20px" height="20px" src="content/images/error.png"><img ng-if="bet.set && bet.hidden"  width="20px" height="20px" src="content/images/success.png">{{(bet.set && !bet.hidden)?  (bet.result.home +' - '+bet.result.away):''}}</td>
+								</tr>
+							</tbody>
+							</table>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		</button>
 </div>

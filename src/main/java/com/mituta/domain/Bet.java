@@ -36,12 +36,16 @@ public class Bet implements Serializable {
 	@NotNull
 	private Game fixture;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@NotNull
 	private FixtureResult result;
 
 	@Transient
 	private boolean isHidden;
+	
+	@Transient
+	private boolean isSet;
+
 
 	public Long getId() {
 		return id;
@@ -89,6 +93,14 @@ public class Bet implements Serializable {
 
 	public void setHidden(boolean isHidden) {
 		this.isHidden = isHidden;
+	}
+
+	public boolean isSet() {
+		return isSet;
+	}
+
+	public void setSet(boolean isSet) {
+		this.isSet = isSet;
 	}
 
 	@Override

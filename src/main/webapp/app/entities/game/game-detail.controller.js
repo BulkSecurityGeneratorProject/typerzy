@@ -15,6 +15,6 @@
             vm.game = result;
         });
         $scope.$on('$destroy', unsubscribe);
-
+        
     }
 })();

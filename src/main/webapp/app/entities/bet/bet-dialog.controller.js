@@ -27,9 +27,9 @@
             vm.isSaving = true;
             
             if (vm.bet.id !== null) {
-                Bet.update(vm.bet, onSaveSuccess, onSaveError);
+                Bet.crud.update(vm.bet, onSaveSuccess, onSaveError);
             } else {
-                Bet.save(vm.bet, onSaveSuccess, onSaveError);
+                Bet.crud.save(vm.bet, onSaveSuccess, onSaveError);
             }
         }
 

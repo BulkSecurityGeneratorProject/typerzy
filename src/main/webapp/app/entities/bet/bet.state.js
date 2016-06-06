@@ -51,7 +51,7 @@
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Bet', function($stateParams, Bet) {
-                    return Bet.get({id : $stateParams.id}).$promise;
+                    return Bet.crud.get({id : $stateParams.id}).$promise;
                 }]
             }
         })
@@ -98,7 +98,7 @@
                     size: 'lg',
                     resolve: {
                         entity: ['Bet', function(Bet) {
-                            return Bet.get({id : $stateParams.id}).$promise;
+                            return Bet.crud.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -122,7 +122,7 @@
                     size: 'md',
                     resolve: {
                         entity: ['Bet', function(Bet) {
-                            return Bet.get({id : $stateParams.id}).$promise;
+                            return Bet.crud.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {

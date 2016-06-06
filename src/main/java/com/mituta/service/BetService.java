@@ -1,6 +1,8 @@
 package com.mituta.service;
 
 import com.mituta.domain.Bet;
+import com.mituta.domain.Game;
+import com.mituta.domain.Tournament;
 import com.mituta.domain.User;
 import com.mituta.repository.BetRepository;
 import com.mituta.repository.FixtureResultRepository;
@@ -17,8 +19,10 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Service Implementation for managing Bet.
@@ -33,6 +37,9 @@ public class BetService {
 	private UserService userService;
 	@Inject
 	private BetRepository betRepository;
+	
+	@Inject
+	private TournamentService tournamentService;
 
 	/**
 	 * Save a bet.
@@ -45,7 +52,7 @@ public class BetService {
 		log.debug("Request to save Bet : {}", bet);
 		bet.setTime(ZonedDateTime.now());
 
-		Optional<User> currentUser = userService.getUserWithAuthoritiesByLogin(SecurityUtils.getCurrentUserLogin());
+		Optional<User> currentUser = getCurrentUser();
 		if(currentUser.isPresent())
 		{
 			bet.setUser(currentUser.get());
@@ -53,6 +60,10 @@ public class BetService {
 		
 		Bet result = betRepository.save(bet);
 		return result;
+	}
+
+	private Optional<User> getCurrentUser() {
+		return userService.getUserWithAuthoritiesByLogin(SecurityUtils.getCurrentUserLogin());
 	}
 
 	/**
@@ -69,17 +80,62 @@ public class BetService {
 		
 		for(Bet bet : result )
 		{
-			if( bet.getFixture().getTime().isAfter(now))
-			{
-				bet.setHidden(true);
-				bet.setResult(null);
-			}
-			else
-			{
-				bet.setHidden(false);
-			}
+			hideIfNecessary(now, bet);
 		}
 		return result;
+	}
+
+	private void hideIfNecessary(ZonedDateTime now, Bet bet) {
+		
+		if( bet.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin()))
+		{
+			bet.setHidden(false);
+		}
+		else
+		if( bet.getFixture().getTime().isAfter(now))
+		{
+			bet.setHidden(true);
+			bet.setResult(null);
+		}
+		else
+		{
+			bet.setHidden(false);
+		}
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Bet> getForGame(Game game)
+	{
+		
+		Tournament tournament = tournamentService.findOne( game.getTournament().getId() );
+		Set<User > players = tournament.getPlayers();
+		List<Bet> bets = betRepository.findByGameId(game.getId());
+		List<Bet> results = new ArrayList<>();
+		for(User user: players)
+		{
+			results.add(getBet(game, user, bets));
+		}
+		
+		return results;
+		
+	}
+
+	private Bet getBet(Game game, User user, List<Bet> bets) {
+		
+		for( Bet bet : bets)
+		{
+			if(bet.getUser().equals(user))
+			{
+				hideIfNecessary(ZonedDateTime.now(), bet);
+				bet.setSet(true);
+				return bet;
+			}
+		}
+		Bet emptyBet = new Bet();
+		emptyBet.setUser(user);
+		emptyBet.setSet(false);
+		return emptyBet;
+		
 	}
 
 	/**

@@ -15,7 +15,7 @@
         loadAll();
 
         function loadAll() {
-            Bet.query(function(result) {
+            Bet.crud.query(function(result) {
                 vm.bets = result;
             });
         }

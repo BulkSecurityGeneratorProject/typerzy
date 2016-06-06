@@ -2,8 +2,10 @@ package com.mituta.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mituta.domain.Bet;
+import com.mituta.domain.Game;
 import com.mituta.service.BetService;
 import com.mituta.web.rest.util.HeaderUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -89,6 +92,20 @@ public class BetResource {
     public List<Bet> getAllBets() {
         log.debug("REST request to get all Bets");
         return betService.findAll();
+    }
+
+    /**
+     * GET  /bets : get all the bets.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of bets in body
+     */
+    @RequestMapping(value = "/bets/game",
+    		method = RequestMethod.PUT,
+    		produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Bet> getBetsForGame(@RequestBody Game game) {
+    	log.debug("REST request to get all Bets");
+    	return betService.getForGame(game);
     }
 
     /**

@@ -9,7 +9,7 @@
     function Bet ($resource, DateUtils) {
         var resourceUrl =  'api/bets/:id';
 
-        return $resource(resourceUrl, {}, {
+        return { crud: $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
@@ -22,6 +22,9 @@
                 }
             },
             'update': { method:'PUT' }
-        });
+        }), games:  $resource('api/bets/game/:gameId', {}, {
+            'get': { method: 'PUT', isArray: true}
+        })
+        };
     }
 })();

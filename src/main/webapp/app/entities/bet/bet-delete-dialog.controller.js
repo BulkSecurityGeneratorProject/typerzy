@@ -19,7 +19,7 @@
         }
 
         function confirmDelete (id) {
-            Bet.delete({id: id},
+            Bet.crud.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
                 });

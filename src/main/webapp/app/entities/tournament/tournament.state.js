@@ -49,6 +49,7 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('tournament');
                     $translatePartialLoader.addPart('game');
+                    $translatePartialLoader.addPart('bet');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Tournament', function($stateParams, Tournament) {

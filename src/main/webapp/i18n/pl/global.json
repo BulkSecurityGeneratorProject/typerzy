@@ -1,6 +1,6 @@
 {
     "global": {
-        "title": "Test2",
+        "title": "obstawiacze.pl",
         "browsehappy": "Używasz <strong>przestarzałej</strong> przeglądarki. Proszę <a href=\"http://browsehappy.com/\">uaktualnij swoją przeglądarkę</a> aby poprawić wrażenia z użytkowania tej aplikacji.",
         "menu": {
             "home": "Strona domowa",
@@ -10,9 +10,8 @@
                 "team": "Drużyna",
                 "game": "Mecz",
                 "fixtureResult": "Wynik",
-                "tournament": "Turniej",
+                "tournament": "Twoje turnieje",
                 "game": "Game",
-                "tournament": "Tournament",
                 "bet": "Bet",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },

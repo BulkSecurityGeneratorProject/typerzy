@@ -7,11 +7,13 @@
                 "createOrEditLabel": "Dodaj lub edytuj: Tournament",
                 "search": "Search for Tournament"
             },
+             "exactResultPoints": "Punkty za dokładny wynik",
+           "resultPoints": "Punkty za wskazanie zwycięzcy/remisu",
             "created": "A new Tournament is created with identifier {{ param }}",
             "updated": "A Tournament is updated with identifier {{ param }}",
             "deleted": "A Tournament is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Tournament {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć Turniej {{ id }}?"
             },
             "detail": {
                 "title": "Tournament"

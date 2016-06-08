@@ -7,6 +7,8 @@
                 "createOrEditLabel": "Dodaj lub edytuj: Mecz",
                 "search": "Search for Game"
             },
+            "hideBets": "Ukryj zakłady",
+            "showBets": "Pokaż zakłady",
             "created": "A new Game is created with identifier {{ param }}",
             "updated": "A Game is updated with identifier {{ param }}",
             "deleted": "A Game is deleted with identifier {{ param }}",

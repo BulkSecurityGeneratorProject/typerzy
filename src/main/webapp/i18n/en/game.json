@@ -7,6 +7,8 @@
                 "createOrEditLabel": "Create or edit a Game",
                 "search": "Search for Game"
             },
+             "hideBets": "Hide bets",
+            "showBets": "Show bets",
             "created": "A new Game is created with identifier {{ param }}",
             "updated": "A Game is updated with identifier {{ param }}",
             "deleted": "A Game is deleted with identifier {{ param }}",

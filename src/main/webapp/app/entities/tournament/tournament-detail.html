@@ -30,7 +30,6 @@
 				{{players.login}}{{$last ? '' : ', '}} </span>
 		</dd>
 		<hr>
-		<hr>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-4 no-padding-left">
@@ -78,19 +77,25 @@
 
 						<td class="text-right">
 							<div class="btn-group flex-btn-group-container">
-								<button type="submit"
+							<button type="submit"
+									ui-sref="game-detail({gameid:game.id, owner:vm.tournament})"
+									class="btn btn-primary btn-sm">
+									<span class="glyphicon glyphicon-screenshot"></span> <span
+										class="hidden-xs hidden-sm" translate="test2App.bet.action.bet"></span>
+								</button>
+								<button type="submit" has-authority="ROLE_ADMIN"
 									ui-sref="game-detail({gameid:game.id, owner:vm.tournament})"
 									class="btn btn-info btn-sm">
 									<span class="glyphicon glyphicon-eye-open"></span> <span
 										class="hidden-xs hidden-sm" translate="entity.action.view"></span>
 								</button>
-								<button type="submit"
+								<button type="submit" has-authority="ROLE_ADMIN"
 									ui-sref="game.edit({gameid:game.id, owner:vm.tournament})"
 									class="btn btn-primary btn-sm">
 									<span class="glyphicon glyphicon-pencil"></span> <span
 										class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
 								</button>
-								<button type="submit"
+								<button type="submit" has-authority="ROLE_ADMIN"
 									ui-sref="game.delete({gameid:game.id, owner:vm.tournament})"
 									class="btn btn-danger btn-sm">
 									<span class="glyphicon glyphicon-remove-circle"></span> <span
@@ -99,8 +104,10 @@
 							</div>
 						</td>
 						<td>
-							<button ng-if="game.expanded" ng-click="game.expanded = false">-</button>
-							<button ng-if="!game.expanded" ng-click="game.expanded = true">+</button>
+							<button ng-if="game.expanded" ng-click="game.expanded = false" class="btn btn-link btn-sm"><span
+										class="hidden-xs hidden-sm" translate="test2App.game.hideBets">-</span></button>
+							<button ng-if="!game.expanded" ng-click="game.expanded = true" class="btn btn-link btn-sm">	<span
+										class="hidden-xs hidden-sm" translate="test2App.game.showBets">+</span></button>
 						</td>
 					</tr>
 					<tr ng-if="game.expanded" ng-repeat-end="">

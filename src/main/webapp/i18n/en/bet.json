@@ -7,6 +7,11 @@
                 "createOrEditLabel": "Create or edit a Bet",
                 "search": "Search for Bet"
             },
+            
+             "action" : {
+            	"bet" : "Bet"
+            },
+            
             "created": "A new Bet is created with identifier {{ param }}",
             "updated": "A Bet is updated with identifier {{ param }}",
             "deleted": "A Bet is deleted with identifier {{ param }}",

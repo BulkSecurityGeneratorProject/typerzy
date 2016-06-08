@@ -3,9 +3,12 @@
         "bet" : {
             "home": {
                 "title": "Bets",
-                "createLabel": "Dodaj Bet",
+                "createLabel": "Stwórz zakład",
                 "createOrEditLabel": "Dodaj lub edytuj: Bet",
                 "search": "Search for Bet"
+            },
+            "action" : {
+            	"bet" : "Obstaw"
             },
             "created": "A new Bet is created with identifier {{ param }}",
             "updated": "A Bet is updated with identifier {{ param }}",

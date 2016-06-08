@@ -69,7 +69,7 @@ public class BetResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Bet> updateBet(@Valid @RequestBody Bet bet) throws URISyntaxException {
+    public ResponseEntity<Bet> updateBet( @RequestBody Bet bet) throws URISyntaxException {
         log.debug("REST request to update Bet : {}", bet);
         if (bet.getId() == null) {
             return createBet(bet);
@@ -95,7 +95,7 @@ public class BetResource {
     }
 
     /**
-     * GET  /bets : get all the bets.
+     * PUT  /bets : get all the bets.
      *
      * @return the ResponseEntity with status 200 (OK) and the list of bets in body
      */
@@ -106,6 +106,15 @@ public class BetResource {
     public List<Bet> getBetsForGame(@RequestBody Game game) {
     	log.debug("REST request to get all Bets");
     	return betService.getForGame(game);
+    }
+
+    @RequestMapping(value = "/bets/game/{id}",
+    		method = RequestMethod.GET,
+    		produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public Bet getUserBetForGame(@PathVariable Long id) {
+    	log.debug("REST request to get all Bets");
+    	return betService.getForCurrentUserAndGame(id);
     }
 
     /**

@@ -162,4 +162,15 @@ public class BetService {
 		log.debug("Request to delete Bet : {}", id);
 		betRepository.delete(id);
 	}
+
+	public Bet getForCurrentUserAndGame(long game) {
+		
+		log.debug("Request to get current user Bet for: {}", game);
+		List<Bet> bets = betRepository.getforCurrentUserAndGame(game);
+		if(bets.isEmpty())
+		{
+			return null;
+		}
+		return bets.get(0);
+	}
 }

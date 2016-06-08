@@ -18,4 +18,7 @@ public interface BetRepository extends JpaRepository<Bet,Long> {
 
 	@Query("SELECT b FROM Bet b  where b.fixture.id  =:id")
 	List<Bet> findByGameId( @Param("id") Long id);
+
+	@Query("SELECT b FROM Bet b  where b.fixture.id  =:id and b.user.login = ?#{principal.username} ")
+	List<Bet> getforCurrentUserAndGame(@Param("id") Long id);
 }

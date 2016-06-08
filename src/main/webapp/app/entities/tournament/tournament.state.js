@@ -208,6 +208,7 @@
                     size: 'md',
                     resolve: {
                         entity: ['Game', function(Game) {
+                        		
                             return Game.games.get({id : $stateParams.id});
                         }]
                     }
@@ -232,12 +233,12 @@
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: function () {
-                            return {
-                            	id: null,
-                                fixture: $stateParams.game,
-                            };
-                        }
+                        entity: ['Bet', function(Bet) {
+                        		
+                            var bet =Bet.games.getForUserAndGame({gameId : $stateParams.game.id});
+                            bet.fixture = $stateParams.game;
+                            return bet;
+                        }]
                     }
                 }).result.then(function() {
                 	   $state.go('tournament-detail', {id: $stateParams.owner.id}, { reload: true });

@@ -68,11 +68,11 @@
 
 					<tr ng-repeat-start="game in vm.fixtures track by game.id">
 						<td>{{game.time | date:'medium'}}</td>
-						<td><a ui-sref="team-detail({id:game.home.id})">{{game.homeTeam.name}}</a>
+						<td>{{game.homeTeam.name}}
 						</td>
-						<td><a ui-sref="team-detail({id:game.away.id})">{{game.awayTeam.name}}</a>
+						<td>{{game.awayTeam.name}}
 						</td>
-						<td><a ui-sref="fixture-result-detail({id:game.result.id})">{{game.result.id}}</a>
+						<td>{{game.result.id}}
 						</td>
 
 						<td class="text-right">

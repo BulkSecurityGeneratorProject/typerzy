@@ -23,7 +23,8 @@
             },
             'update': { method:'PUT' }
         }), games:  $resource('api/bets/game/:gameId', {}, {
-            'get': { method: 'PUT', isArray: true}
+            'get': { method: 'PUT', isArray: true},
+            'getForUserAndGame' : {method: 'GET', isArray:false}
         })
         };
     }

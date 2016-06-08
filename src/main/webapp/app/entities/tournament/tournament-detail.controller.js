@@ -21,19 +21,17 @@
         	return Bet.games.get(game);
         }
         
-        function date(time)
+        
+        
+        function isNotStarted(game)
         {
-        	return new Date(time);
+        	return new Date(game.time) > new Date();
         }
         
-        function now()
-        {
-        	return new Date();
-        }
-        
-        $scope.now = now;
-        $scope.date = date;
+        $scope.isNotStarted = isNotStarted;
         $scope.getBets = getBets;
+        
+        
         $scope.$on('$destroy', unsubscribe);
 
     }

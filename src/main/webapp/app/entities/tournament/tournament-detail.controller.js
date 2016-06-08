@@ -20,6 +20,19 @@
         	
         	return Bet.games.get(game);
         }
+        
+        function date(time)
+        {
+        	return new Date(time);
+        }
+        
+        function now()
+        {
+        	return new Date();
+        }
+        
+        $scope.now = now;
+        $scope.date = date;
         $scope.getBets = getBets;
         $scope.$on('$destroy', unsubscribe);
 

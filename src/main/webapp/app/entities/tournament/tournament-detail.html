@@ -77,7 +77,7 @@
 
 						<td class="text-right">
 							<div class="btn-group flex-btn-group-container">
-							<button type="submit"
+							<button type="submit" ng-if="date(game.time) > now()"
 									ui-sref="bet.betOrEdit({game:game, owner:vm.tournament})"
 									class="btn btn-primary btn-sm">
 									<span class="glyphicon glyphicon-screenshot"></span> <span

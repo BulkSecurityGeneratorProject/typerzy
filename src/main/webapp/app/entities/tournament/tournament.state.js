@@ -217,6 +217,34 @@
                 	  $state.go('tournament-detail', {id: $stateParams.owner.id});
                 });
             }]
+        })
+        .state('bet.betOrEdit', {
+            parent: 'tournament-detail',
+            url: '/bet',
+            params: {owner:null, game:null},
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/bet/bet-dialog.html',
+                    controller: 'BetDialogController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: function () {
+                            return {
+                            	id: null,
+                                fixture: $stateParams.game,
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                	   $state.go('tournament-detail', {id: $stateParams.owner.id}, { reload: true });
+                }, function() {
+                	  $state.go('tournament-detail', {id: $stateParams.owner.id});
+                });
+            }]
         });
     }
 

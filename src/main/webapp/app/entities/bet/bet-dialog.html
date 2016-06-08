@@ -1,57 +1,43 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+<form name="editForm" role="form" novalidate ng-submit="vm.save()"
+	show-validation>
 
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myBetLabel" translate="test2App.bet.home.createOrEditLabel">Create or edit a Bet</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.bet.id">
-            <label for="id" translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.bet.id" readonly />
-        </div>
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true" ng-click="vm.clear()">&times;</button>
+		<h4 class="modal-title" id="myBetLabel"
+			translate="test2App.bet.home.createOrEditLabel">Create or edit a
+			Bet</h4>
+	</div>
+	<div class="modal-body">
+		<jhi-alert-error></jhi-alert-error>
+		<div class="form-group" ng-show="vm.bet.id">
+			<label for="id" translate="global.field.id">ID</label> <input
+				type="text" class="form-control" id="id" name="id"
+				ng-model="vm.bet.id" readonly />
+		</div>
 
-        <div class="form-group">
-            <label translate="test2App.bet.fixture" for="field_fixture">Fixture</label>
-            <select class="form-control" id="field_fixture" name="fixture" ng-model="vm.bet.fixture" ng-options='game as (game.homeTeam.name+ " - " + game.awayTeam.name) for game in vm.games track by game.id' required>
-                <option value=""></option>
-            </select>
-        </div>
-        <div ng-show="editForm.fixture.$invalid">
-            <p class="help-block"
-                ng-show="editForm.fixture.$error.required" translate="entity.validation.required">
-                This field is required.
-            </p>
-        </div>
-        <div class="form-group">
-       
-            <label translate="test2App.bet.result" for="field_result">Result</label>
-             <input type="number" class="form-control" name="homeResult" id="home_result"
-                    ng-model="vm.bet.result.home"
-                    required />
-         <input type="number" class="form-control" name="awayResult" id="away_result"
-                    ng-model="vm.bet.result.away"
-                    required />
-           <!--   <select class="form-control" id="field_result" name="result" ng-model="vm.bet.result" ng-options="fixtureResult as fixtureResult.id for fixtureResult in vm.fixtureresults track by fixtureResult.id" required>
-                <option value=""></option>
-            </select>
-        </div>
-        <div ng-show="editForm.result.$invalid">
-            <p class="help-block"
-                ng-show="editForm.result.$error.required" translate="entity.validation.required">
-                This field is required.
-            </p>
-        </div> -->
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
-        </button>
-    </div>
+		<div class="form-group">
+
+			<label for="home_result">{{vm.bet.fixture.homeTeam.name}}</label>
+			<input type="number" class="form-control" name="homeResult"
+				id="home_result" ng-model="vm.bet.result.home" required />
+		</div>
+		<div class="form-group">
+			<label for="away_result">{{vm.bet.fixture.awayTeam.name}}</label>
+			<input type="number" class="form-control" name="awayResult"
+				id="away_result" ng-model="vm.bet.result.away" required />
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal"
+				ng-click="vm.clear()">
+				<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+					translate="entity.action.cancel">Cancel</span>
+			</button>
+			<button type="submit" ng-disabled="editForm.$invalid || vm.isSaving"
+				class="btn btn-primary">
+				<span class="glyphicon glyphicon-save"></span>&nbsp;<span
+					translate="entity.action.save">Save</span>
+			</button>
+		</div>
 </form>

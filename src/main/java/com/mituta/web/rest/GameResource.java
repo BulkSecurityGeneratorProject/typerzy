@@ -111,12 +111,10 @@ public class GameResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Game>> getAllGamesForTournament(Pageable pageable, @PathVariable Long id)
+    public List<Game> getAllGamesForTournament( @PathVariable Long id)
         throws URISyntaxException {
         log.debug("REST request to get a page of Games");
-        Page<Game> page = gameService.findForTournament(pageable, id); 
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/fixtures");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return gameService.findForTournament( id);
     }
 
     /**

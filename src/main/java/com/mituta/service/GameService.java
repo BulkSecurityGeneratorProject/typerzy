@@ -42,5 +42,5 @@ public interface GameService {
      */
     void delete(Long id);
     
-    Page<Game> findForTournament(Pageable pageable, Long aTournament);
+    List<Game> findForTournament(Long aTournament);
 }

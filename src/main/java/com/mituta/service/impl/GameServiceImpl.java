@@ -77,7 +77,7 @@ public class GameServiceImpl implements GameService{
     }
 
 	@Override
-	public Page<Game> findForTournament(Pageable pageable, Long tournament) {
-		return gameRepository.findByTournamentId(pageable, tournament);
+	public List<Game> findForTournament( Long tournament) {
+		return gameRepository.findByTournamentId( tournament);
 	}
 }

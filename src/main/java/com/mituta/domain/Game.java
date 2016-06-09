@@ -42,7 +42,7 @@ public class Game implements Serializable {
     @JoinColumn(name="TOURNAMENT_ID")
     private Tournament tournament;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private FixtureResult result;
 

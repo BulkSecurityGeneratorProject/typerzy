@@ -1,5 +1,7 @@
 package com.mituta.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,6 +16,6 @@ import com.mituta.domain.Game;
 public interface GameRepository extends JpaRepository<Game,Long> {
 
 	@Query("SELECT g FROM Game g  where g.tournament.id  =:id order by g.time asc")
-	Page<Game> findByTournamentId(Pageable pageable, @Param("id") Long id);
+	List<Game> findByTournamentId(@Param("id") Long id);
 
 }

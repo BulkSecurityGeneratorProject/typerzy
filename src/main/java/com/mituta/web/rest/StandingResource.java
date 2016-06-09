@@ -30,6 +30,9 @@ import com.mituta.domain.Standing;
 import com.mituta.domain.Team;
 import com.mituta.domain.Tournament;
 import com.mituta.domain.User;
+import com.mituta.repository.GameRepository;
+import com.mituta.service.BetService;
+import com.mituta.service.GameService;
 import com.mituta.service.TournamentService;
 import com.mituta.web.rest.util.PaginationUtil;
 
@@ -39,6 +42,12 @@ public class StandingResource {
 
 	@Inject
 	TournamentService tournamentService;
+	
+	@Inject
+	GameService gameService;
+	
+	@Inject
+	BetService betService;
 
 	@RequestMapping(value = "/standings/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
@@ -47,8 +56,8 @@ public class StandingResource {
 
 		Tournament tournament = tournamentService.findOne(id);
 		Set<User> players = tournament.getPlayers();
+		List<Game> games = gameService.findForTournament(id);
 		List<Standing> points = new ArrayList<>();
-		Set<Game> games = tournament.getFixtures();
 		
 		for( User player : players)
 		{
@@ -74,17 +83,17 @@ public class StandingResource {
 		}
 		
 	}
-	private Integer calculatePoints(User player, Set<Game> games,
+	private Integer calculatePoints(User player, List<Game> games,
 			Tournament tournament) {
 		int points = 0;
 		for (Game game : games) {
-			Bet bet = getUserBet(player, game.getBets());
+			Bet bet = getUserBet(player, betService.getForGame(game));
 			if (bet != null && bet.getResult() != null
 					&& game.getResult() != null) {
 				FixtureResult betResult = bet.getResult();
 				FixtureResult gameResult = game.getResult();
 
-				if (betResult.equals(gameResult)) {
+				if (betResult.getAway() == gameResult.getAway() && betResult.getHome() == gameResult.getHome()) {
 					points += tournament.getExactResultPoints();
 				} else if (sameWinnerOrDraw(betResult, gameResult)) {
 					points += tournament.getResultPoints();
@@ -104,8 +113,14 @@ public class StandingResource {
 		return betResultSign == gameResultSign;
 	}
 
-	private Bet getUserBet(User player, Set<Bet> bets) {
-		// TODO Auto-generated method stub
+	private Bet getUserBet(User player, List<Bet> bets) {
+		for(Bet bet : bets)
+		{
+			if( bet.getUser().getLogin().equals(player.getLogin()))
+			{
+				return bet;
+			}
+		}
 		return null;
 	}
 }

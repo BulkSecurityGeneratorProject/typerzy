@@ -26,8 +26,12 @@
 			<span translate="test2App.tournament.players">Players</span>
 		</dt>
 		<dd>
-			<span ng-repeat="players in vm.tournament.players">
-				{{players.login}}{{$last ? '' : ', '}} </span>
+		<ol>
+			<span ng-repeat="standing in vm.standings">
+			<li>{{standing.user.login}} - {{standing.points}}</li>
+				 </span>
+		
+		</ol>
 		</dd>
 		<hr>
 		<div class="container-fluid" has-authority="ROLE_ADMIN">

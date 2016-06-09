@@ -2,7 +2,7 @@
     "test2App": {
         "tournament" : {
             "home": {
-                "title": "Tournaments",
+                "title": "Twoje turnieje",
                 "createLabel": "Dodaj Tournament",
                 "createOrEditLabel": "Dodaj lub edytuj: Tournament",
                 "search": "Search for Tournament"
@@ -18,9 +18,9 @@
             "detail": {
                 "title": "Tournament"
             },
-            "name": "Name",
-            "players": "Players",
-            "fixtures": "Fixtures"
+            "name": "Nazwa",
+            "players": "Gracze",
+            "fixtures": "Mecze"
         }
     }
 }

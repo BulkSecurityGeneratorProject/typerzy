@@ -20,7 +20,7 @@
                 "settings": "Ustawienia",
                 "password": "Hasło",
                 "sessions": "Sesje",
-                "login": "Autoryzacja",
+                "login": "Logowanie",
                 "logout": "Wyloguj",
                 "register": "Zarejestruj się"
             },
@@ -90,7 +90,7 @@
             "delete": "Usuń",
             "edit": "Edytuj",
             "save": "Zapisz",
-            "view": "Widok"
+            "view": "Szczegóły"
         },
         "detail": {
             "field": "Pole",

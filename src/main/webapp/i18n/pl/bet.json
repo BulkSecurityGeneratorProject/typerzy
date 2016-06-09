@@ -2,10 +2,10 @@
     "test2App": {
         "bet" : {
             "home": {
-                "title": "Bets",
-                "createLabel": "Stwórz zakład",
-                "createOrEditLabel": "Dodaj lub edytuj: Bet",
-                "search": "Search for Bet"
+                "title": "Typ",
+                "createLabel": "Stwórz typ",
+                "createOrEditLabel": "Podaj swój typ",
+                "search": "Szukaj typ"
             },
             "action" : {
             	"bet" : "Obstaw"

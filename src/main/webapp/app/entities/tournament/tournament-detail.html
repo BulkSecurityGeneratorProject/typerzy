@@ -4,9 +4,9 @@
 		<span>{{vm.tournament.name}}</span>
 	</h2>
 	<hr>
-	<dl class="dl-horizontal">
+	<dl class="dl-vertical">
 
-		<dt>
+		<dt >
 			<span translate="test2App.tournament.resultPoints">Result
 				points</span>
 		</dt>
@@ -46,19 +46,12 @@
 		<div class="table-responsive">
 			<table class="jh-table table table-striped">
 				<thead>
-					<tr jh-sort="vm.predicate" ascending="vm.reverse"
-						callback="vm.reset()">
-						<th jh-sort-by="time"><span translate="test2App.game.time">Time</span>
-							<span class="glyphicon glyphicon-sort"></span></th>
-						<th jh-sort-by="hometeam.name"><span
-							translate="test2App.game.hometeam">Home</span> <span
-							class="glyphicon glyphicon-sort"></span></th>
-						<th jh-sort-by="awayteam.name"><span
-							translate="test2App.game.awayteam">Away</span> <span
-							class="glyphicon glyphicon-sort"></span></th>
-						<th jh-sort-by="result.id"><span
-							translate="test2App.game.result">Result</span> <span
-							class="glyphicon glyphicon-sort"></span></th>
+					<tr>
+						<th ><span translate="test2App.game.time">Time</span></th>
+						<th ><span
+							translate="test2App.game.hometeam">Home</span> </th>
+						<th ><span	translate="test2App.game.awayteam">Away</span> </th>
+						<th ><span	translate="test2App.game.result">Result</span> </th>
 						<th></th>
 						<th></th>
 					</tr>

@@ -233,6 +233,11 @@
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('bet');
+                            $translatePartialLoader.addPart('error');
+                            return $translate.refresh();
+                        }],
                         entity: ['Bet', function(Bet) {
                         		
                             var bet =Bet.games.getForUserAndGame({gameId : $stateParams.game.id});

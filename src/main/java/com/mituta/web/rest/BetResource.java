@@ -19,6 +19,7 @@ import javax.validation.Valid;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,9 +48,14 @@ public class BetResource {
     @Timed
     public ResponseEntity<Bet> createBet( @RequestBody Bet bet) throws URISyntaxException {
         log.debug("REST request to save Bet : {}", bet);
+        if( bet.getFixture().getTime().isBefore(ZonedDateTime.now()))
+        {
+                  return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("bet", "bettingClosed", "Cannot create bet for a game that has already started")).body(null);
+        }
         if (bet.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("bet", "idexists", "A new bet cannot already have an ID")).body(null);
         }
+      
         Bet result = betService.save(bet);
         return ResponseEntity.created(new URI("/api/bets/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("bet", result.getId().toString()))
@@ -71,6 +77,10 @@ public class BetResource {
     @Timed
     public ResponseEntity<Bet> updateBet( @RequestBody Bet bet) throws URISyntaxException {
         log.debug("REST request to update Bet : {}", bet);
+        if( bet.getFixture().getTime().isBefore(ZonedDateTime.now()))
+        {
+                  return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("bet", "bettingClosed", "Cannot create bet for a game that has already started")).body(null);
+        }
         if (bet.getId() == null) {
             return createBet(bet);
         }

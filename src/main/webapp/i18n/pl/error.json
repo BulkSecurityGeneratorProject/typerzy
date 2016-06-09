@@ -1,6 +1,7 @@
 {
     "error": {
         "title": "Strona błędu!",
-        "403": "Nie masz praw dostępu do tej strony."
+        "403": "Nie masz praw dostępu do tej strony.",
+        "bettingClosed" : "Obstawianie zamknięte, mecz już się rozpoczął"
     }
 }

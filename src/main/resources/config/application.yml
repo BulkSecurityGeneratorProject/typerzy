@@ -58,8 +58,8 @@ jhipster:
                 # Token is valid 30 minutes
                 tokenValidityInSeconds: 1800
     swagger:
-        title: test2 API
-        description: test2 API documentation
+        title: obstawiacze.pl API
+        description: obstawiacze.pl API documentation
         version: 0.0.1
         termsOfServiceUrl:
         contactName:

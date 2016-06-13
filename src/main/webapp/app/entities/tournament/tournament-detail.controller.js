@@ -12,7 +12,6 @@
         vm.tournament = entity;
         vm.fixtures = Game.fixtures.query({id:$stateParams.id});
         vm.standings = Standing.query({id:$stateParams.id});
-        
         var unsubscribe = $rootScope.$on('test2App:tournamentUpdate', function(event, result) {
             vm.tournament = result;
         });

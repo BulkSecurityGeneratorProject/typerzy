@@ -17,13 +17,13 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
-                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="name"><span translate="test2App.team.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="test2App.team.name">Name</span></th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+            <tbody>
                 <tr ng-repeat="team in vm.teams track by team.id">
                     <td><a ui-sref="team-detail({id:team.id})">{{team.id}}</a></td>
                     <td>{{team.name}}</td>

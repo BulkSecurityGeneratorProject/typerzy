@@ -26,12 +26,25 @@
 			<span translate="test2App.tournament.players">Players</span>
 		</dt>
 		<dd>
-		<ol>
-			<span ng-repeat="standing in vm.standings">
-			<li>{{standing.user.login}} - {{standing.points}}</li>
-				 </span>
-		
-		</ol>
+		<div class="table-responsive">
+			<table class="jh-table table table-striped">
+				<thead>
+					<tr>
+						<th ><span translate="test2App.tournament.position">Position</span></th>
+						<th ><span
+							translate="test2App.bet.user">User</span> </th>
+						<th ><span	translate="test2App.tournament.points">Points</span> </th>
+					</tr>
+				</thead>
+				<tbody >
+					<tr ng-repeat="standing in vm.standings">
+						<td>{{$index + 1}}</td>
+						<td>{{standing.user.firstName}} {{standing.user.lastName}}</td>
+						<td>{{standing.points}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		</dd>
 		<hr>
 		<div class="container-fluid" has-authority="ROLE_ADMIN">
@@ -101,13 +114,11 @@
 						<td>
 							<button ng-if="game.expanded" ng-click="game.expanded = false"
 								class="btn btn-link btn-sm">
-								<span class="hidden-xs hidden-sm"
-									translate="test2App.game.hideBets">-</span>
+								<span translate="test2App.game.hideBets">-</span>
 							</button>
 							<button ng-if="!game.expanded" ng-click="game.expanded = true"
 								class="btn btn-link btn-sm">
-								<span class="hidden-xs hidden-sm"
-									translate="test2App.game.showBets">+</span>
+								<span translate="test2App.game.showBets">+</span>
 							</button>
 						</td>
 					</tr>
@@ -124,7 +135,7 @@
 								</thead>
 								<tbody ng-init='bets = getBets(game)'>
 									<tr ng-repeat="bet in bets">
-										<td>{{bet.user.login}}</td>
+										<td>{{bet.user.firstName}} {{bet.user.lastName}}</td>
 										<td>{{bet.time | date:'medium'}}</td>
 										<td><img ng-if="bet.set == false" width="20px"
 											height="20px" src="content/images/error.png"><img

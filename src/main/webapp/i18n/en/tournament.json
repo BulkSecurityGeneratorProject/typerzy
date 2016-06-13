@@ -20,7 +20,9 @@
             },
             "name": "Name",
             "players": "Players",
-            "fixtures": "Fixtures"
+            "fixtures": "Fixtures",
+            "position": "Place",
+           "points": "Points"
         }
     }
 }

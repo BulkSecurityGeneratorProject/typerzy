@@ -20,7 +20,7 @@
                 "title": "Bet"
             },
             "time": "Time",
-            "user": "User",
+            "user": "Gracz",
             "fixture": "Fixture",
             "result": "Result"
         }

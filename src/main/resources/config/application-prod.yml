@@ -18,10 +18,10 @@ spring:
         livereload:
             enabled: false
     datasource:
-        url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/obstawiacze?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
-        password:
+        password: admin
         hikari:
             data-source-properties:
                 cachePrepStmts: true
@@ -38,10 +38,16 @@ spring:
             hibernate.generate_statistics: false
             hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: smtp.poczta.onet.pl
+        port: 465
+        username: obstawiacze@spoko.pl  
+        password: bobklop6        
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.poczta.onet.pl
     thymeleaf:
         cache: true
 

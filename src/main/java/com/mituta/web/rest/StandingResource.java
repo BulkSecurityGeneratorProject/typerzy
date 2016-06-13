@@ -42,10 +42,10 @@ public class StandingResource {
 
 	@Inject
 	TournamentService tournamentService;
-	
+
 	@Inject
 	GameService gameService;
-	
+
 	@Inject
 	BetService betService;
 
@@ -58,31 +58,28 @@ public class StandingResource {
 		Set<User> players = tournament.getPlayers();
 		List<Game> games = gameService.findForTournament(id);
 		List<Standing> points = new ArrayList<>();
-		
-		for( User player : players)
-		{
+
+		for (User player : players) {
 			Standing standing = new Standing();
 			standing.setUser(player);
 			standing.setPoints(calculatePoints(player, games, tournament));
 			points.add(standing);
 		}
-			
 
 		points.sort(new StandingComparator());
 		return points;
 	}
 
-	
-	private static class StandingComparator implements Comparator<Standing>
-	{
+	private static class StandingComparator implements Comparator<Standing> {
 
 		@Override
 		public int compare(Standing arg0, Standing arg1) {
-			
-			return  arg1.getPoints() - arg0.getPoints() ;
+
+			return arg1.getPoints() - arg0.getPoints();
 		}
-		
+
 	}
+
 	private Integer calculatePoints(User player, List<Game> games,
 			Tournament tournament) {
 		int points = 0;
@@ -92,11 +89,15 @@ public class StandingResource {
 					&& game.getResult() != null) {
 				FixtureResult betResult = bet.getResult();
 				FixtureResult gameResult = game.getResult();
+				if (gameResult.getHome() != null
+						&& gameResult.getAway() != null) {
 
-				if (betResult.getAway() == gameResult.getAway() && betResult.getHome() == gameResult.getHome()) {
-					points += tournament.getExactResultPoints();
-				} else if (sameWinnerOrDraw(betResult, gameResult)) {
-					points += tournament.getResultPoints();
+					if (betResult.getAway() == gameResult.getAway()
+							&& betResult.getHome() == gameResult.getHome()) {
+						points += tournament.getExactResultPoints();
+					} else if (sameWinnerOrDraw(betResult, gameResult)) {
+						points += tournament.getResultPoints();
+					}
 				}
 
 			}
@@ -114,10 +115,8 @@ public class StandingResource {
 	}
 
 	private Bet getUserBet(User player, List<Bet> bets) {
-		for(Bet bet : bets)
-		{
-			if( bet.getUser().getLogin().equals(player.getLogin()))
-			{
+		for (Bet bet : bets) {
+			if (bet.getUser().getLogin().equals(player.getLogin())) {
 				return bet;
 			}
 		}

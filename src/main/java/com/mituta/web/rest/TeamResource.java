@@ -91,12 +91,10 @@ public class TeamResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Team>> getAllTeams(Pageable pageable)
+    public List<Team> getAllTeams()
         throws URISyntaxException {
         log.debug("REST request to get a page of Teams");
-        Page<Team> page = teamService.findAll(pageable); 
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/teams");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return teamService.findAll(); 
     }
 
     /**

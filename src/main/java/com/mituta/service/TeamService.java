@@ -22,10 +22,9 @@ public interface TeamService {
     /**
      *  Get all the teams.
      *  
-     *  @param pageable the pagination information
      *  @return the list of entities
      */
-    Page<Team> findAll(Pageable pageable);
+    List<Team> findAll( );
 
     /**
      *  Get the "id" team.

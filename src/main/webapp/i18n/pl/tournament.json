@@ -20,7 +20,9 @@
             },
             "name": "Nazwa",
             "players": "Gracze",
-            "fixtures": "Mecze"
+            "fixtures": "Mecze",
+            "position": "Miejsce",
+           "points": "Punkty"
         }
     }
 }

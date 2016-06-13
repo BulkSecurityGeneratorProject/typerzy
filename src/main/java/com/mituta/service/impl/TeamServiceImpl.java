@@ -44,9 +44,9 @@ public class TeamServiceImpl implements TeamService{
      *  @return the list of entities
      */
     @Transactional(readOnly = true) 
-    public Page<Team> findAll(Pageable pageable) {
+    public List<Team> findAll( ) {
         log.debug("Request to get all Teams");
-        Page<Team> result = teamRepository.findAll(pageable); 
+        List<Team> result = teamRepository.findAll(); 
         return result;
     }
 

@@ -1,10 +1,67 @@
 (function() {
     'use strict';
 
-    angular
-        .module('test2App')
-        .controller('TournamentDetailController', TournamentDetailController);
-
+    var app =  angular.module('test2App');
+    
+    app.controller('TournamentDetailController', TournamentDetailController);
+    app.directive('games', function(){
+    	      return {
+    	        restrict: 'E',
+    	        scope:{
+    	            games: "="
+    	        },
+    	        templateUrl: 'components/tournament/fixtures.html'
+    	      }
+    	    });
+    
+    app.filter('pastFixtures', function() {
+        return function(fixtures) {
+        	var now = new Date();
+        	now.setHours(0,0,0,0);
+        	var filtered = [];
+            for (var i = 0; i < fixtures.length; i++) {
+              var fixture = fixtures[i];
+              if (new Date(fixture.time) < now) {
+                filtered.push(fixture);
+              }
+            }
+            return filtered;
+        };
+    });
+    
+    app.filter('todaysFixtures', function() {
+    	return function(fixtures) {
+    		var now = new Date();
+    		now.setHours(0,0,0,0);
+    		var filtered = [];
+    		for (var i = 0; i < fixtures.length; i++) {
+    			var fixture = fixtures[i];
+    			var fixtureDate = new Date(fixture.time);
+    			fixtureDate.setHours(0,0,0,0);
+    			if (fixtureDate.getTime() ==  now.getTime()) {
+    				filtered.push(fixture);
+    			}
+    		}
+    		return filtered;
+    	};
+    });
+    app.filter('futureFixtures', function() {
+    	return function(fixtures) {
+    		var now = new Date();
+    		now.setHours(0,0,0,0);
+    		var filtered = [];
+    		for (var i = 0; i < fixtures.length; i++) {
+    			var fixture = fixtures[i];
+    			var fixtureDate = new Date(fixture.time);
+    			fixtureDate.setHours(0,0,0,0);
+    			if (fixtureDate >  now) {
+    				filtered.push(fixture);
+    			}
+    		}
+    		return filtered;
+    	};
+    });
+    
     TournamentDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Tournament', 'User', 'Game', 'Bet', 'Standing'];
 
     function TournamentDetailController($scope, $rootScope, $stateParams, entity, Tournament, User, Game, Bet, Standing) {

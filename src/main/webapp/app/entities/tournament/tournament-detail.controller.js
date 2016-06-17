@@ -10,7 +10,7 @@
     	        scope:{
     	            games: "="
     	        },
-    	        templateUrl: 'components/tournament/fixtures.html'
+    	        templateUrl: 'app/components/tournament/fixtures.html'
     	      }
     	    });
     

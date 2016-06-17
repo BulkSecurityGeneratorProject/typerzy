@@ -22,7 +22,10 @@
             "players": "Players",
             "fixtures": "Fixtures",
             "position": "Place",
-           "points": "Points"
+           "points": "Points",
+           "futureFixtures" : "Future fixtures",
+           "todaysFixtures" : "Today's fixtures",
+           "pastFixtures" : "Previous fixtures"
         }
     }
 }

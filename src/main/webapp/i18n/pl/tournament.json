@@ -22,7 +22,10 @@
             "players": "Gracze",
             "fixtures": "Mecze",
             "position": "Miejsce",
-           "points": "Punkty"
+           "points": "Punkty",
+           "futureFixtures" : "Kolejne mecze",
+           "todaysFixtures" : "Dzisiejsze mecze",
+           "pastFixtures" : "Poprzednie mecze"
         }
     }
 }

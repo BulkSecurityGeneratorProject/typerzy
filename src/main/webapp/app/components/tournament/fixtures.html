@@ -1,0 +1,89 @@
+	<div class="table-responsive">
+			<table class="jh-table table table-striped">
+				<thead>
+					<tr>
+						<th ><span translate="test2App.game.time">Time</span></th>
+						<th ><span
+							translate="test2App.game.hometeam">Home</span> </th>
+						<th ><span	translate="test2App.game.awayteam">Away</span> </th>
+						<th ><span	translate="test2App.game.result">Result</span> </th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr ng-repeat-start="game in games track by game.id" >
+						<td>{{game.time | date:'medium'}}</td>
+						<td>{{game.homeTeam.name}}</td>
+						<td>{{game.awayTeam.name}}</td>
+						<td>{{game.result.home}} - {{game.result.away}} </td>
+
+						<td class="text-right">
+							<div class="btn-group flex-btn-group-container">
+								<button type="submit" ng-if="isNotStarted(game)"
+									ui-sref="bet.betOrEdit({game:game, owner:vm.tournament})"
+									class="btn btn-primary btn-sm">
+									<span class="glyphicon glyphicon-screenshot"></span> <span
+										class="hidden-xs hidden-sm"
+										translate="test2App.bet.action.bet"></span>
+								</button>
+								<button type="submit" has-authority="ROLE_ADMIN"
+									ui-sref="game-detail({gameid:game.id, owner:vm.tournament})"
+									class="btn btn-info btn-sm">
+									<span class="glyphicon glyphicon-eye-open"></span> <span
+										class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+								</button>
+								<button type="submit" has-authority="ROLE_ADMIN"
+									ui-sref="game.edit({gameid:game.id, owner:vm.tournament})"
+									class="btn btn-primary btn-sm">
+									<span class="glyphicon glyphicon-pencil"></span> <span
+										class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+								</button>
+								<button type="submit" has-authority="ROLE_ADMIN"
+									ui-sref="game.delete({gameid:game.id, owner:vm.tournament})"
+									class="btn btn-danger btn-sm">
+									<span class="glyphicon glyphicon-remove-circle"></span> <span
+										class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+								</button>
+							</div>
+						</td>
+						<td>
+							<button ng-if="game.expanded" ng-click="game.expanded = false"
+								class="btn btn-link btn-sm">
+								<span translate="test2App.game.hideBets">-</span>
+							</button>
+							<button ng-if="!game.expanded" ng-click="game.expanded = true"
+								class="btn btn-link btn-sm">
+								<span translate="test2App.game.showBets">+</span>
+							</button>
+						</td>
+					</tr>
+					<tr ng-if="game.expanded" ng-repeat-end="">
+						<td colspan="6">
+							<table class="jh-table table table-striped">
+								<thead>
+									<tr>
+										<th><span translate="test2App.bet.user">Login</span></th>
+										<th><span translate="test2App.bet.time">Time</span></th>
+										<th><span translate="test2App.bet.result">Fixture</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody ng-init='bets = getBets(game)'>
+									<tr ng-repeat="bet in bets">
+										<td>{{bet.user.firstName}} {{bet.user.lastName}}</td>
+										<td>{{bet.time | date:'medium'}}</td>
+										<td><img ng-if="bet.set == false" width="20px"
+											height="20px" src="content/images/error.png"><img
+											ng-if="bet.set && bet.hidden" width="20px" height="20px"
+											src="content/images/success.png">{{(bet.set &&
+											!bet.hidden)? (bet.result.home +' - '+bet.result.away):''}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>

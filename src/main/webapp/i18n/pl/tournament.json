@@ -19,13 +19,17 @@
                 "title": "Tournament"
             },
             "name": "Nazwa",
-            "players": "Gracze",
+            "players": "Tabela",
             "fixtures": "Mecze",
             "position": "Miejsce",
            "points": "Punkty",
            "futureFixtures" : "Kolejne mecze",
            "todaysFixtures" : "Dzisiejsze mecze",
-           "pastFixtures" : "Poprzednie mecze"
+            "pastFixtures" :
+           {
+           "show" : "Poprzednie mecze",
+           "hide" : "Ukryj poprzednie mecze"
+           }
         }
     }
 }

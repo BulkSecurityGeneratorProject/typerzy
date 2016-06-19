@@ -25,7 +25,11 @@
            "points": "Points",
            "futureFixtures" : "Future fixtures",
            "todaysFixtures" : "Today's fixtures",
-           "pastFixtures" : "Previous fixtures"
+           "pastFixtures" :
+           {
+           "show" : "Previous fixtures",
+           "hide" : "Hide previous fixtures"
+           }
         }
     }
 }

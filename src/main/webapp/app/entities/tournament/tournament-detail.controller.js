@@ -69,6 +69,8 @@
         vm.tournament = entity;
         vm.fixtures = Game.fixtures.query({id:$stateParams.id});
         vm.standings = Standing.query({id:$stateParams.id});
+        vm.pastFixturesExpanded = false;
+        vm.futureFixturesExpanded = false;
         var unsubscribe = $rootScope.$on('test2App:tournamentUpdate', function(event, result) {
             vm.tournament = result;
         });
